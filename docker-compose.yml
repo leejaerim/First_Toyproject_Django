@@ -1,0 +1,18 @@
+version: "3"
+
+services: 
+    web:
+        build: .
+        command: python manage.py runserver 0:8000
+        ports:
+            - "8000:8000"
+        volumes: 
+            - .:/app
+        depends_on: 
+            - mariadb
+    mariadb:
+        image: mariadb:10.3.27
+        restart: always
+        environment: 
+            - MYSQL_USER_ID = ${MYSQL_USER_ID}
+            - MYSQL_USER_PASSWORD = ${MYSQL_USER_PASSWORD}
