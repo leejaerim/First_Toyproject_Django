@@ -6,7 +6,7 @@ class Todo(models.Model):
     text = models.CharField(max_length=200)#Not Null
     isCompleted = models.SmallIntegerField(null=True)
     def __str__(self):
-        return self.todo_text
+        return self.text
     class Meta:
         db_table='todo'
 
@@ -19,12 +19,13 @@ class User(models.Model):
     class Meta:
         db_table='user'
 class Room(models.Model):
-    room_title = models.CharField(max_length=30)
+    title = models.CharField(max_length=30)
     room_password = models.CharField(max_length=4,null=True)
-    user_one = models.ForeignKey(User, on_delete=models.CASCADE)
-    isAvailable = models.SmallIntegerField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    isAvailable = models.SmallIntegerField(default=1)
+    hasPassword = models.SmallIntegerField(default=0,null=True)
     def __str__(self):
-        return self.room_title
+        return self.title
     class Meta:
         db_table='room'
 

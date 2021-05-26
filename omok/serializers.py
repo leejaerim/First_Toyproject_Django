@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Room, User
+from .models import User,Room
 
 #Room serialize object to json
 # serializers.HyperlinkedModelSerializer
@@ -13,4 +13,4 @@ class UserSerializer(serializers.ModelSerializer):
 class RoomSerializer(serializers.ModelSerializer):
        class Meta:
             model = Room
-            fields = ['id','room_title','room_password', 'user_one', 'isAvailable']
+            fields = ['id','title', 'user', 'isAvailable', 'hasPassword']

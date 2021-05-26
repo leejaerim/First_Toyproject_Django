@@ -2,3 +2,4 @@ Django==3.2.2
 djangorestframework
 mysqlclient
 django-environ
+django-cors-headers

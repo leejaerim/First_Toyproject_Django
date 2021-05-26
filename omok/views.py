@@ -1,7 +1,8 @@
-from omok.models import Room,User
+from omok.models import User,Room
 from django.shortcuts import render
 from rest_framework import serializers 
-from .serializers import RoomSerializer, UserSerializer
+from .serializers import RoomSerializer,UserSerializer
+
 from rest_framework.parsers import JSONParser
 # from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
