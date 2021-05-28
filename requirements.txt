@@ -3,3 +3,4 @@ djangorestframework
 mysqlclient
 django-environ
 django-cors-headers
+graphene-django
