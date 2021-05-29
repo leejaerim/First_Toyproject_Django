@@ -13,5 +13,5 @@ class UserSerializer(serializers.ModelSerializer):
 class RoomSerializer(serializers.ModelSerializer):
        class Meta:
             model = Room
-            fields = ['id','title','room_password', 'user', 'isAvailable', 'hasPassword']
-            extra_kwargs = {'room_password': {'write_only': True, 'min_length': 4}}
+            fields = ['id','title','password', 'user', 'isAvailable', 'hasPassword']
+            extra_kwargs = {'password': {'write_only': True, 'min_length': 4}}

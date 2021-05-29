@@ -9,8 +9,8 @@ class TodoType(DjangoObjectType):
         # field = ("id","text","isCompleted")
 
 class Query(graphene.ObjectType):
-    all_todolist = graphene.List(TodoType)
-    def resolve_all_todolist(self, info):
+    todos = graphene.List(TodoType)
+    def resolve_todos(self, info):
         # We can easily optimize query count in the resolve method
         return Todo.objects.all()
 

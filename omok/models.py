@@ -20,7 +20,7 @@ class User(models.Model):
         db_table='user'
 class Room(models.Model):
     title = models.CharField(max_length=30)
-    room_password = models.CharField(null=True,max_length=12)
+    password = models.CharField(null=True,max_length=12)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     isAvailable = models.SmallIntegerField(default=1)
     hasPassword = models.SmallIntegerField(default=0,null=True)
