@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from omok import views
+from django.views.decorators.csrf import csrf_exempt
+from graphene_django.views import GraphQLView
+from mysite.schema import schema
 
 # from mysite import views
 router = routers.DefaultRouter()
@@ -27,6 +30,7 @@ router.register(r'user',views.UserViewSet)
 urlpatterns = [
     #path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
 ]
 
