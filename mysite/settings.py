@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'omok',
     'corsheaders',
     'graphene_django',
+    
    #'api',
 ]
 GRAPHENE = {
@@ -79,6 +80,8 @@ CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1:3000',
     'http://*.*.*.*:3000',
     'http://*.*.*.*:8000',
+    'http://localhost:80',
+    env('DJANGO_HOST'),
 )
 ROOT_URLCONF = 'mysite.urls'
 

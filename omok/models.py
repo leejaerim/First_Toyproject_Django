@@ -11,11 +11,11 @@ class Todo(models.Model):
         db_table='todo'
 
 class User(models.Model):
-    user_name = models.CharField(max_length=16,default="Guest")
+    name = models.CharField(max_length=16,default="Guest")
     #api_key = models.CharField(max_length=40, null=True)
     #reg_date = models.DateTimeField(auto_now_add=True,null=True)
     def __str__(self):
-        return self.user_name+str(self.id)
+        return self.name+str(self.id)
     class Meta:
         db_table='user'
 class Room(models.Model):
