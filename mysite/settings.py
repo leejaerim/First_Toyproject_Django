@@ -112,11 +112,11 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':env('DJANGO_DB_NAME'),
-        'USER':env('DJANGO_DB_USERNAME'),
-        'PASSWORD':env('DJANGO_DB_PASSWORD'),
-        'HOST':env('DJANGO_DB_HOST'),
-        'PORT':env('DJANGO_DB_PORT')
+        'NAME':env('MARIADB_DATABASE'),
+        'USER':env('MARIADB_USER'),
+        'PASSWORD':env('MARIADB_PASSWORD'),
+        'HOST':env('MARIADB_ROOT_HOST'),
+        'PORT':env('MARIADB_PORT')
     }
 }
 
