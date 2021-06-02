@@ -1,7 +1,7 @@
 import graphene
 # from graphene.types import field
 from graphene_django import DjangoObjectType
-from omok.models import Todo
+from todolist.models import Todo
 
 class TodoType(DjangoObjectType):
     class Meta:

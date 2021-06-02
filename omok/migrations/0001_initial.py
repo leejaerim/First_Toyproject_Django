@@ -13,21 +13,10 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='todo',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('text', models.CharField(max_length=200)),
-                ('isCompleted', models.SmallIntegerField(null=True)),
-            ],
-            options={
-                'db_table': 'todo',
-            },
-        ),
-        migrations.CreateModel(
             name='User',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('user_name', models.CharField(max_length=16)),
+                ('name', models.CharField(max_length=16)),
             ],
             options={
                 'db_table': 'user',
@@ -37,10 +26,10 @@ class Migration(migrations.Migration):
             name='Room',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('room_title', models.CharField(max_length=30)),
-                ('room_password', models.CharField(max_length=4, null=True)),
+                ('title', models.CharField(max_length=30)),
+                ('password', models.CharField(max_length=4, null=True)),
                 ('isAvailable', models.SmallIntegerField()),
-                ('user_one', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='omok.user')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='omok.user')),
             ],
             options={
                 'db_table': 'room',

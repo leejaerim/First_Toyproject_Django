@@ -14,12 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from rest_framework import routers
-from .views import RoomViewSet, UserViewSet
+from .views import TodoViewSet
 
 router = routers.DefaultRouter()
-router.register(r'rooms', RoomViewSet)
-router.register(r'user', UserViewSet)
+router.register(r'todos', TodoViewSet)
 
-app_name = 'omok'
+app_name = 'todolist'
 urlpatterns = router.urls
 

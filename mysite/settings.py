@@ -32,13 +32,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'omok.apps.OmokConfig',
+    'todolist.apps.TodolistConfig',
     'rest_framework',
-    'omok',
     'corsheaders',
-    'graphene_django',
-    
-   #'api',
+    'graphene_django'
 ]
+
 GRAPHENE = {
     "SCHEMA": "mysite.schema.schema"
 }
@@ -72,7 +72,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://*.*.*.*:3000',
     'http://*.*.*.*:8000',
     'http://localhost:80',
-    #os.environ.get('MARIADB_ROOT_HOST'),
+    os.environ.get('DJANGO_HOST'),
 )
 ROOT_URLCONF = 'mysite.urls'
 
