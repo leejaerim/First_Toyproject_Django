@@ -1,8 +1,8 @@
 from omok.models import User,Room
 from django.shortcuts import render
-from rest_framework import serializers 
+from rest_framework import serializers ,status
 from .serializers import RoomSerializer,UserSerializer
-
+from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 # from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
@@ -12,11 +12,19 @@ class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
     # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    def destroy(self, *args, **kwargs):
+        serializer = self.get_serializer(self.get_object())
+        super().destroy(*args, **kwargs)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    def destroy(self, *args, **kwargs):
+        serializer = self.get_serializer(self.get_object())
+        super().destroy(*args, **kwargs)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 
