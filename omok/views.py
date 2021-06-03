@@ -1,9 +1,14 @@
 from omok.models import User,Room
 from django.shortcuts import render
 from rest_framework import serializers ,status
+<<<<<<< HEAD
+from .serializers import RoomSerializer,UserSerializer
+from rest_framework.response import Response
+=======
 from rest_framework.response import Response
 from .serializers import RoomSerializer,UserSerializer
 
+>>>>>>> master
 from rest_framework.parsers import JSONParser
 # from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
@@ -58,4 +63,9 @@ class UserViewSet(viewsets.ModelViewSet):
 #         return JsonResponse(serializer.errors,status=400)
 #     elif request.method == 'DELETE':
 #         obj.delelte()
+<<<<<<< HEAD
 #         return HttpResponse(status=204)
+
+=======
+#         return HttpResponse(status=204)
+>>>>>>> master

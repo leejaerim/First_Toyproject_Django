@@ -1,8 +1,15 @@
 import graphene
+<<<<<<< HEAD
+# from graphene.types import field
+from graphene_django import DjangoObjectType
+from graphene.types.argument import Argument
+from todolist.models import Todo
+=======
 from graphene.types.argument import Argument
 # from graphene.types import field
 from graphene_django import DjangoObjectType
 from omok.models import Todo
+>>>>>>> master
 
 class TodoType(DjangoObjectType):
     class Meta:

@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+<<<<<<< HEAD
+=======
 from django.core.exceptions import ImproperlyConfigured
 from pathlib import Path
 import environ
@@ -19,12 +21,17 @@ environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+>>>>>>> master
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
+SECRET_KEY = os.environ.get('SECRET_KEY')
+=======
 SECRET_KEY = env('SECRET_KEY')
+>>>>>>> master
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +48,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
+    'omok.apps.OmokConfig',
+    'todolist.apps.TodolistConfig',
+    'rest_framework',
+    'corsheaders',
+    'graphene_django'
+]
+
+=======
     'rest_framework',
     'omok',
     'corsheaders',
@@ -48,6 +64,7 @@ INSTALLED_APPS = [
     
    #'api',
 ]
+>>>>>>> master
 GRAPHENE = {
     "SCHEMA": "mysite.schema.schema"
 }
@@ -81,7 +98,11 @@ CORS_ORIGIN_WHITELIST = (
     'http://*.*.*.*:3000',
     'http://*.*.*.*:8000',
     'http://localhost:80',
+<<<<<<< HEAD
+    os.environ.get('DJANGO_HOST'),
+=======
     env('DJANGO_HOST'),
+>>>>>>> master
 )
 ROOT_URLCONF = 'mysite.urls'
 
@@ -109,6 +130,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':os.environ.get('MARIADB_DATABASE'),
+        'USER':os.environ.get('MARIADB_USER'),
+        'PASSWORD':os.environ.get('MARIADB_PASSWORD'),
+        'HOST':os.environ.get('MARIADB_ROOT_HOST'),
+        'PORT':os.environ.get('MARIADB_PORT'),
+=======
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
@@ -117,6 +146,7 @@ DATABASES = {
         'PASSWORD':env('MARIADB_PASSWORD'),
         'HOST':env('MARIADB_ROOT_HOST'),
         'PORT':env('MARIADB_PORT')
+>>>>>>> master
     }
 }
 
