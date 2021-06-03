@@ -13,10 +13,28 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+<<<<<<< HEAD
             name='User',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=16)),
+=======
+            name='todo',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('text', models.CharField(max_length=200)),
+                ('isCompleted', models.SmallIntegerField(null=True)),
+            ],
+            options={
+                'db_table': 'todo',
+            },
+        ),
+        migrations.CreateModel(
+            name='User',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('user_name', models.CharField(max_length=16)),
+>>>>>>> master
             ],
             options={
                 'db_table': 'user',
@@ -26,10 +44,17 @@ class Migration(migrations.Migration):
             name='Room',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+<<<<<<< HEAD
                 ('title', models.CharField(max_length=30)),
                 ('password', models.CharField(max_length=4, null=True)),
                 ('isAvailable', models.SmallIntegerField()),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='omok.user')),
+=======
+                ('room_title', models.CharField(max_length=30)),
+                ('room_password', models.CharField(max_length=4, null=True)),
+                ('isAvailable', models.SmallIntegerField()),
+                ('user_one', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='omok.user')),
+>>>>>>> master
             ],
             options={
                 'db_table': 'room',
