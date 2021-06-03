@@ -14,8 +14,4 @@ class RoomSerializer(serializers.ModelSerializer):
        class Meta:
             model = Room
             fields = ['id','title','password', 'user', 'isAvailable', 'hasPassword']
-<<<<<<< HEAD
             extra_kwargs = {'password': {'write_only': True, 'max_length': 4}}
-=======
-            extra_kwargs = {'password': {'write_only': True,'max_length':4}}
->>>>>>> master
