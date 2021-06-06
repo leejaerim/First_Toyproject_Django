@@ -57,14 +57,20 @@ class Query(graphene.ObjectType):
 class CreateTodo(graphene.Mutation):
     class Arguments:
         text = graphene.String()
-        isCompleted = graphene.Int(required=False)
+        isCompleted = graphene.Boolean(required=False)
 
     id = graphene.ID()
     text = graphene.String()
-    isCompleted = graphene.Int()
+    isCompleted = graphene.Boolean()
 
     def mutate(self, info, text, isCompleted=None):
-        todo = Todo.objects.create(text=text, isCompleted=isCompleted)
+        _isCompleted = None
+        if isCompleted is not None:
+            if isCompleted:
+                _isCompleted = 1
+            else :
+                _isCompleted = 0
+        todo = Todo.objects.create(text=text, isCompleted=_isCompleted)
         todo.save()
         return CreateTodo(id=todo.id, text= text, isCompleted=isCompleted)
 
@@ -73,16 +79,23 @@ class UpdateTodo(graphene.Mutation):
     class Arguments:
         id = graphene.ID()
         text = graphene.String()
-        isCompleted = graphene.Int()
+        isCompleted = graphene.Boolean()
 
     id = graphene.ID()
     text = graphene.String()
-    isCompleted = graphene.Int()
+    isCompleted = graphene.Boolean()
 
     def mutate(self, info, id, text=None, isCompleted=None):
+        _isCompleted = None
+        if isCompleted is not None:
+            if isCompleted:
+                _isCompleted = 1
+            else :
+                _isCompleted = 0
+        
         todo = Todo.objects.get(pk=id)
         todo.text = text if text is not None else todo.text
-        todo.isCompleted = isCompleted if isCompleted is not None else todo.isCompleted
+        todo.isCompleted = _isCompleted
         todo.save()
         return UpdateTodo(id=id, text = text, isCompleted=isCompleted)
 
