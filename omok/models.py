@@ -15,9 +15,10 @@ class User(models.Model):
 class Room(models.Model):
     title = models.CharField(max_length=30)
     password = models.CharField(null=True,max_length=12)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     isAvailable = models.SmallIntegerField(default=1)
     hasPassword = models.SmallIntegerField(default=0,null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.title
     class Meta:

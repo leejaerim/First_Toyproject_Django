@@ -39,7 +39,10 @@ INSTALLED_APPS = [
 ]
 
 GRAPHENE = {
-    "SCHEMA": "mysite.schema.schema"
+    "SCHEMA": "mysite.schema.schema",
+    'MIDDLEWARE': [
+        'graphene_django.debug.DjangoDebugMiddleware',
+    ]
 }
 REST_FRAMEWORK = {
 #      'DEFAULT_AUTHENTICATION_CLASSES': (
