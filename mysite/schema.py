@@ -66,13 +66,7 @@ class CreateUser(graphene.Mutation):
         return CreateUser(
         user = user
         )
-class CreateRoom(graphene.Mutation):
-    class Arguments:
-        title = graphene.String()
-        password = graphene.String()
-        isAvailable = graphene.Int()
-        hasPassword = graphene.Int()
-        user = graphene.field(UserType)
+
 class UpdateTodo(graphene.Mutation):
     class Arguments:
         id = graphene.ID()
