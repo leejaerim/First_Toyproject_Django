@@ -1,9 +1,5 @@
 from omok.models import User,Room
-<<<<<<< HEAD
-from django.shortcuts import render, get_object_or_404
-=======
 from django.shortcuts import render
->>>>>>> cc895bd558e676669571e53c105dc646158ddc83
 from rest_framework import serializers ,status
 from .serializers import RoomSerializer,UserSerializer
 from rest_framework.response import Response
@@ -11,33 +7,19 @@ from rest_framework.parsers import JSONParser
 # from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-<<<<<<< HEAD
-from omok.permissions import IsOwnerOrReadOnly
-=======
->>>>>>> cc895bd558e676669571e53c105dc646158ddc83
 
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
-<<<<<<< HEAD
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
-=======
     # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
->>>>>>> cc895bd558e676669571e53c105dc646158ddc83
     def destroy(self, *args, **kwargs):
         serializer = self.get_serializer(self.get_object())
         super().destroy(*args, **kwargs)
         return Response(serializer.data, status=status.HTTP_200_OK)
-<<<<<<< HEAD
-    
-        
-=======
->>>>>>> cc895bd558e676669571e53c105dc646158ddc83
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-<<<<<<< HEAD
     # permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
     def list(self, request):
         queryset = User.objects.all()
@@ -53,14 +35,10 @@ class UserViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save()
 
-=======
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
->>>>>>> cc895bd558e676669571e53c105dc646158ddc83
     def destroy(self, *args, **kwargs):
         serializer = self.get_serializer(self.get_object())
         super().destroy(*args, **kwargs)
         return Response(serializer.data, status=status.HTTP_200_OK)
-<<<<<<< HEAD
     def login(self, request, *args, **kwargs):
         user_id = request.session.get('user')
         if user_id :
@@ -69,8 +47,6 @@ class UserViewSet(viewsets.ModelViewSet):
         else:
             return render(request,'login.html')
     
-=======
->>>>>>> cc895bd558e676669571e53c105dc646158ddc83
 
 
 
