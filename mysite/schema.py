@@ -3,7 +3,7 @@ from graphene_django.debug import DjangoDebug
 from todolist.models import Todo
 from todolist.schema import TodoType, CreateTodo, UpdateTodo, DeleteTodo
 from omok.models import User, Room
-from omok.schema import UserType, RoomType, CreateRoom, DeleteRoom
+from omok.schema import UpdateRoom, UpdateUser, UserType, RoomType, CreateRoom, DeleteRoom
 
 
 class Query(graphene.ObjectType):
@@ -41,6 +41,8 @@ class Mutation(graphene.ObjectType):
     delete_todo = DeleteTodo.Field()
     
     create_room = CreateRoom.Field()
+    update_room = UpdateRoom.Field()
+    update_user = UpdateUser.Field()
     delete_room = DeleteRoom.Field()
     debug = graphene.Field(DjangoDebug, name='_debug')
 
