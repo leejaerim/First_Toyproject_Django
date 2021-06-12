@@ -1,16 +1,26 @@
 from rest_framework import permissions
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
+    def has_permission(self, request,view):
+        return bool(request.method in permissions.SAFE_METHODS and request.session.session_key is not None)
     def has_object_permission(self,request,view,obj):
         if request.method in permissions.SAFE_METHODS:
-            # if request.COOKIES.get('user') is NOT Null:
-            #     user_cookie = request.COOKIES.get('user')
-            # request.session['user']=obj.id
-            # user = request.session['user']
+
             if(request.session.session_key is None):
                 request.session.create()
-        #     return true
-        # return obj.owner == request.User
+            else :
+                return True
+        return obj.author == request.user 
+
+
+
+
+    # if request.COOKIES.get('user') is NOT Null:
+    #     user_cookie = request.COOKIES.get('user')
+    # request.session['user']=obj.id
+    # user = request.session['user']
+    #     return true
+    # return obj.owner == request.User
 
 
     # def session(request):

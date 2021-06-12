@@ -7,11 +7,12 @@ from rest_framework.parsers import JSONParser
 # from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
+from .permissions import IsOwnerOrReadOnly
 
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
     def destroy(self, *args, **kwargs):
         serializer = self.get_serializer(self.get_object())
         super().destroy(*args, **kwargs)
@@ -40,18 +41,18 @@ class UserViewSet(viewsets.ModelViewSet):
         super().destroy(*args, **kwargs)
         return Response(serializer.data, status=status.HTTP_200_OK)
     def login(self, request, *args, **kwargs):
-        user_id = request.session.get('user')
-        if user_id :
-            user = User.objects.get(pk=user_id)
-            return HttpResponse(user)
+        if request.session.has_key(uesr) :
+            user_id = request.session.get('user')
+            if user_id :
+                user = User.objects.get(pk=user_id)
+                return HttpResponse(user)
         else:
             return render(request,'login.html')
-    
+
 
 
 
 # def room_list(request):
-
 #     if request.method == 'GET':
 #         query_set = Room.objects.all()
 #         serializer = RoomSerializer(query_set,many=True)

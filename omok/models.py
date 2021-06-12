@@ -10,8 +10,7 @@ class User(models.Model):
         return self.name+str(self.id)
     class Meta:
         db_table='user'
-
-
+        
 class Room(models.Model):
     title = models.CharField(max_length=30)
     password = models.CharField(null=True,max_length=12)
@@ -23,4 +22,3 @@ class Room(models.Model):
         return self.title
     class Meta:
         db_table='room'
-

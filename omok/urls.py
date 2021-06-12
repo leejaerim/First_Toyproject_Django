@@ -15,11 +15,17 @@ Including another URLconf
 """
 from rest_framework import routers
 from .views import RoomViewSet, UserViewSet
+from .  import session
+from django.urls import path 
 
 router = routers.DefaultRouter()
 router.register(r'rooms', RoomViewSet)
 router.register(r'user', UserViewSet)
 
+
 app_name = 'omok'
-urlpatterns = router.urls
+urlpatterns = [
+    path('session/', session.login),
+]
+urlpatterns += router.urls
 

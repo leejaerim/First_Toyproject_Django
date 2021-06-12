@@ -24,8 +24,8 @@ from mysite.schema import schema
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('omok_api/', include('omok.urls')),
-    path('todo_api/', include('todolist.urls')),
+    path('omok/', include('omok.urls')),
+    path('todo/', include('todolist.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
 ]
