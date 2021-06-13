@@ -4,13 +4,13 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
     def has_permission(self, request,view):
         return bool(request.method in permissions.SAFE_METHODS and request.session.session_key is not None)
     def has_object_permission(self,request,view,obj):
+        print(request.user)
         if request.method in permissions.SAFE_METHODS:
-
             if(request.session.session_key is None):
                 request.session.create()
+                return False
             else :
                 return True
-        return obj.author == request.user 
 
 
 
