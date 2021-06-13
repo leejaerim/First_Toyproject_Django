@@ -1,22 +1,24 @@
 from django.http import HttpResponse,JsonResponse
 from datetime import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.sessions.models import Session
 import json
+
+
 def login(request):
-    res = request.session.session_key
+    res = request.session.session_key 
     if res is not None:
         session_expiry_date = request.session.get_expiry_date().replace(tzinfo=None)
         now = datetime.now()
         seconds_left = (session_expiry_date - now).total_seconds()
         if seconds_left > 0 :
-            session = Session.objects.get(session_key = res)
-            return JsonResponse({'id': res})     
+            response =  JsonResponse({'id': res})
+            return response  
         else :
             return HttpResponse("Session was expired.")
     else:
         request.session.create()
-        return HttpResponse()
+        return redirect('http://127.0.0.1:3000/omok/')
 
     # res = request.session.session_key
     # return HttpResponse(json.dumps(res), 'application/json')
