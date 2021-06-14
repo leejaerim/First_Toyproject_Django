@@ -138,3 +138,18 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 [14/Jun/2021 12:09:09] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
 [14/Jun/2021 12:09:10] WARNING [django.request:224] Not Found: /
 [14/Jun/2021 12:09:10] WARNING [django.server:161] "GET / HTTP/1.1" 404 2486
+[14/Jun/2021 12:15:26] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 12:15:29] WARNING [django.request:224] Not Found: /
+[14/Jun/2021 12:15:29] WARNING [django.server:161] "GET / HTTP/1.1" 404 2486
+[14/Jun/2021 12:15:31] INFO [django.server:161] "GET /omok/ HTTP/1.1" 200 5487
+[14/Jun/2021 12:15:36] WARNING [django.request:224] Forbidden: /omok/rooms/
+[14/Jun/2021 12:15:36] WARNING [django.server:161] "GET /omok/rooms/ HTTP/1.1" 403 5130
+[14/Jun/2021 12:15:41] WARNING [django.request:224] Forbidden: /omok/rooms/1/
+[14/Jun/2021 12:15:41] WARNING [django.server:161] "GET /omok/rooms/1/ HTTP/1.1" 403 5285
+[14/Jun/2021 12:16:53] INFO [django.utils.autoreload:250] /workspace/mysite/settings.py changed, reloading.
+[14/Jun/2021 12:16:54] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 12:16:56] WARNING [django.request:224] Not Found: /
+[14/Jun/2021 12:16:56] WARNING [django.server:161] "GET / HTTP/1.1" 404 2486
+[14/Jun/2021 12:17:00] INFO [django.server:161] "GET /omok/ HTTP/1.1" 200 5487
+[14/Jun/2021 12:17:06] WARNING [django.request:224] Not Found: /omok/1/
+[14/Jun/2021 12:17:06] WARNING [django.server:161] "GET /omok/1/ HTTP/1.1" 404 4585
