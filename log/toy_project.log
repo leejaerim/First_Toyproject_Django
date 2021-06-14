@@ -118,3 +118,97 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 [14/Jun/2021 11:02:11] INFO [django.utils.autoreload:250] /workspace/mysite/settings.py changed, reloading.
 [14/Jun/2021 11:02:11] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
 [14/Jun/2021 11:02:11] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:42:20] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:42:20] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /omok/rooms HTTP/1.1" 301 0
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /omok/rooms HTTP/1.1" 301 0
+[14/Jun/2021 11:42:29] WARNING [django.request:224] Forbidden: /omok/rooms/
+[14/Jun/2021 11:42:29] WARNING [django.request:224] Forbidden: /omok/rooms/
+[14/Jun/2021 11:42:29] WARNING [django.server:161] "GET /omok/rooms/ HTTP/1.1" 403 5130
+[14/Jun/2021 11:42:29] WARNING [django.server:161] "GET /omok/rooms/ HTTP/1.1" 403 5130
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1719
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1719
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/jquery-3.5.1.min.js HTTP/1.1" 200 89476
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/jquery-3.5.1.min.js HTTP/1.1" 200 89476
+[14/Jun/2021 11:42:29] INFO [django.server:161] "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+[14/Jun/2021 11:42:29] WARNING [django.request:224] Not Found: /favicon.ico
+[14/Jun/2021 11:42:29] WARNING [django.request:224] Not Found: /favicon.ico
+[14/Jun/2021 11:42:29] WARNING [django.server:161] "GET /favicon.ico HTTP/1.1" 404 2537
+[14/Jun/2021 11:42:29] WARNING [django.server:161] "GET /favicon.ico HTTP/1.1" 404 2537
+[14/Jun/2021 11:44:10] INFO [django.utils.autoreload:250] /workspace/omok/views.py changed, reloading.
+[14/Jun/2021 11:44:10] INFO [django.utils.autoreload:250] /workspace/omok/views.py changed, reloading.
+[14/Jun/2021 11:44:12] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:44:12] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:44:16] INFO [django.server:161] "GET /omok/rooms/ HTTP/1.1" 200 18189
+[14/Jun/2021 11:44:16] INFO [django.server:161] "GET /omok/rooms/ HTTP/1.1" 200 18189
+[14/Jun/2021 11:44:42] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[14/Jun/2021 11:44:42] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[14/Jun/2021 11:44:45] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:44:45] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:44:48] INFO [django.server:161] "GET /omok/rooms/ HTTP/1.1" 200 18189
+[14/Jun/2021 11:44:48] INFO [django.server:161] "GET /omok/rooms/ HTTP/1.1" 200 18189
+[14/Jun/2021 11:45:15] INFO [django.server:161] "GET /omok/rooms/ HTTP/1.1" 200 18189
+[14/Jun/2021 11:45:15] INFO [django.server:161] "GET /omok/rooms/ HTTP/1.1" 200 18189
+[14/Jun/2021 11:45:30] WARNING [django.request:224] Not Found: /omok/room/9
+[14/Jun/2021 11:45:30] WARNING [django.request:224] Not Found: /omok/room/9
+[14/Jun/2021 11:45:30] WARNING [django.server:161] "GET /omok/room/9 HTTP/1.1" 404 4597
+[14/Jun/2021 11:45:30] WARNING [django.server:161] "GET /omok/room/9 HTTP/1.1" 404 4597
+[14/Jun/2021 11:45:38] INFO [django.server:161] "GET /omok/rooms/9 HTTP/1.1" 301 0
+[14/Jun/2021 11:45:38] INFO [django.server:161] "GET /omok/rooms/9 HTTP/1.1" 301 0
+[14/Jun/2021 11:45:38] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:45:38] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:45:52] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[14/Jun/2021 11:45:52] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[14/Jun/2021 11:45:56] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:45:56] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:45:58] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:45:58] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:46:04] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:46:04] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:32] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[14/Jun/2021 11:47:32] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[14/Jun/2021 11:47:35] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:47:35] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:47:41] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:41] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:42] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:42] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:43] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:43] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:50] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:47:50] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 11:47:53] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:53] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:54] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:54] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:55] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:55] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:55] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:47:55] INFO [django.server:161] "GET /omok/rooms/9/ HTTP/1.1" 200 15791
+[14/Jun/2021 11:48:37] WARNING [django.request:224] Not Found: /
+[14/Jun/2021 11:48:37] WARNING [django.request:224] Not Found: /
+[14/Jun/2021 11:48:37] WARNING [django.server:161] "GET / HTTP/1.1" 404 2486
+[14/Jun/2021 11:48:37] WARNING [django.server:161] "GET / HTTP/1.1" 404 2486
+[14/Jun/2021 11:48:37] WARNING [django.request:224] Not Found: /favicon.ico
+[14/Jun/2021 11:48:37] WARNING [django.request:224] Not Found: /favicon.ico
+[14/Jun/2021 11:48:37] WARNING [django.server:161] "GET /favicon.ico HTTP/1.1" 404 2537
+[14/Jun/2021 11:48:37] WARNING [django.server:161] "GET /favicon.ico HTTP/1.1" 404 2537
+[14/Jun/2021 11:51:20] INFO [django.utils.autoreload:250] /workspace/mysite/settings.py changed, reloading.
+[14/Jun/2021 11:51:20] INFO [django.utils.autoreload:250] /workspace/mysite/settings.py changed, reloading.

@@ -7,9 +7,7 @@ class RoomType(DjangoObjectType):
     class Meta:
         model = Room
         field = ("id", "title", "hasPassword", "isAvailable")
-        exclude_fields = [
-            'password',  #it worked          
-        ]
+        exclude = ("password", "user")
 
 
 class UserType(DjangoObjectType):
@@ -122,12 +120,14 @@ class DeleteUser(graphene.Mutation):
 class DeleteRoom(graphene.Mutation):
     class Arguments:
         id = graphene.ID()
-        #user = graphene.Argument(UserInput)
+        userId = graphene.ID()
 
     id = graphene.ID()
 
-    def mutate(self, info, id):
+    def mutate(self, info, id, userId):
         room = Room.objects.get(pk=id)
-        if room is not None:
+        if room is not None and room.user.id is userId:
             room.delete()
-        return DeleteRoom(id=id)
+            return DeleteRoom(id=id)
+        else :
+            print('delete fail')
