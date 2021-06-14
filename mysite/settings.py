@@ -168,7 +168,7 @@ LOGGING = {
     },  
     'handlers': {
         'file': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.handlers.TimedRotatingFileHandler',
             'filename': './log/toy_project.log',
             'when': 'D', # this specifies the interval
@@ -177,14 +177,14 @@ LOGGING = {
             'formatter': 'verbose',
         },
         'console': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
     }, 
     'root': {
         'handlers': ['console'],
-        'level': 'WARNING',
+        'level': 'INFO',
     }, 
     'loggers': {
         'django': {
