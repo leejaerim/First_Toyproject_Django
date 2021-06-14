@@ -1,7 +1,8 @@
-from django.http import HttpResponse,JsonResponse
+from django.http import JsonResponse
 from datetime import datetime
-from django.shortcuts import render, redirect
-from django.contrib.sessions.models import Session
+from django.contrib.sessions.backends.db import SessionStore
+from django.views.decorators.csrf import csrf_exempt
+from django.views import View
 import json
 import random
 nouns = [
@@ -97,34 +98,23 @@ nouns = [
     'marketing',
 ]
 
-def login(request):
-    word = random.choice(nouns)
-    res = request.session.session_key 
-    if res is not None:
-        session_expiry_date = request.session.get_expiry_date().replace(tzinfo=None)
-        now = datetime.now()
-        seconds_left = (session_expiry_date - now).total_seconds()
-        if seconds_left > 0 :
-            response =  JsonResponse({'id': res,'nickname':word})
-            return response  
-        else :
-            request.session.create()
-            return redirect('http://127.0.0.1:3000/omok/')
+
+@csrf_exempt
+def session(request):
+    body = json.loads(request.body)
+    s = SessionStore()
+    if(s.exists(body.get('sid'))):
+        s = SessionStore(session_key=body.get('sid'))
+        return JsonResponse({
+            'id': s.session_key,
+            'name': s.get('name')
+        })
     else:
-        request.session.create()
-        return redirect('http://127.0.0.1:3000/omok/')
-
-    # res = request.session.session_key
-    # return HttpResponse(json.dumps(res), 'application/json')
-
-    # JsonResponse({'session_expired': True, 'seconds_left': seconds_left })
-    # if request.session.has_key:
-    #     session_key = request.session.session_key
-    #     session = Session.objects.get(session_key = session_key)
-    #     print()
-    #     # uid = session.get_decoded().get('user')
-    # else
-    #     # request.session.crete()
-    # session = Session.objects.get(session_key = session_key)
-    #     data = session.get_decoded()
-
+        s.create()
+        s.set_expiry(0) #expire when browser is closed
+        s.setdefault('name', random.choice(nouns))
+        s.save()
+        return JsonResponse({
+            'id': s.session_key,
+            'name': s.get('name')
+        })
