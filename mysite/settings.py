@@ -168,7 +168,7 @@ LOGGING = {
     },  
     'handlers': {
         'file': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.handlers.TimedRotatingFileHandler',
             'filename': './log/toy_project.log',
             'when': 'D', # this specifies the interval
