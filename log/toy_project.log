@@ -118,3 +118,23 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 [14/Jun/2021 11:02:11] INFO [django.utils.autoreload:250] /workspace/mysite/settings.py changed, reloading.
 [14/Jun/2021 11:02:11] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
 [14/Jun/2021 11:02:11] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 12:07:24] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 12:07:24] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 12:07:27] WARNING [django.request:224] Not Found: /
+[14/Jun/2021 12:07:27] WARNING [django.request:224] Not Found: /
+[14/Jun/2021 12:07:27] WARNING [django.server:161] "GET / HTTP/1.1" 404 2486
+[14/Jun/2021 12:07:27] WARNING [django.server:161] "GET / HTTP/1.1" 404 2486
+[14/Jun/2021 12:07:31] INFO [django.server:161] "GET /omok/ HTTP/1.1" 200 5487
+[14/Jun/2021 12:07:31] INFO [django.server:161] "GET /omok/ HTTP/1.1" 200 5487
+[14/Jun/2021 12:07:56] INFO [django.utils.autoreload:250] /workspace/mysite/settings.py changed, reloading.
+[14/Jun/2021 12:07:56] INFO [django.utils.autoreload:250] /workspace/mysite/settings.py changed, reloading.
+[14/Jun/2021 12:07:57] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 12:07:59] WARNING [django.request:224] Not Found: /
+[14/Jun/2021 12:07:59] WARNING [django.server:161] "GET / HTTP/1.1" 404 2486
+[14/Jun/2021 12:08:04] INFO [django.server:161] "GET /omok/ HTTP/1.1" 200 5487
+[14/Jun/2021 12:08:16] INFO [django.utils.autoreload:250] /workspace/mysite/settings.py changed, reloading.
+[14/Jun/2021 12:09:03] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 12:09:08] INFO [django.utils.autoreload:250] /workspace/mysite/settings.py changed, reloading.
+[14/Jun/2021 12:09:09] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jun/2021 12:09:10] WARNING [django.request:224] Not Found: /
+[14/Jun/2021 12:09:10] WARNING [django.server:161] "GET / HTTP/1.1" 404 2486

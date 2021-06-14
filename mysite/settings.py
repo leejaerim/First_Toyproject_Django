@@ -176,8 +176,15 @@ LOGGING = {
             'backupCount': 10, # how many backup file to keep, 10 days
             'formatter': 'verbose',
         },
-
-    },  
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    }, 
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    }, 
     'loggers': {
         'django': {
             'handlers': ['file'],
