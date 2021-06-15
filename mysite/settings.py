@@ -170,7 +170,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': './log/toy_project.log',
+            'filename': './log/Toy_project.log',
             'when': 'D', # this specifies the interval
             'interval': 1, # defaults to 1, only necessary for other values 
             'backupCount': 10, # how many backup file to keep, 10 days
