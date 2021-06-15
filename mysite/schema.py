@@ -14,7 +14,7 @@ class Query(graphene.ObjectType):
     rooms = graphene.List(RoomType)
     room = graphene.Field(RoomType,
                           id=graphene.ID(),
-                          password = graphene.String(),
+                          password=graphene.String(),
                           user_id=graphene.String())
     debug = graphene.Field(DjangoDebug, name='_debug')
 
@@ -33,11 +33,15 @@ class Query(graphene.ObjectType):
         password = kwargs.get('password')
 
         if info.context.session.exists(uid):
-            return Room.objects.get(pk=rid, password=password)
+            try:
+                return Room.objects.get(pk=rid, password=password)
+            except Room.DoesNotExist:
+                return Room.objects.none()
+            
         else:
             return Room.objects.none()
 
-    def resolve_todos(self, info, **kwargs):
+    def resolve_todos(self, info, **kwargs): 
         return Todo.objects.all()
 
     def resolve_todo(self, info, id):
