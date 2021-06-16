@@ -212,8 +212,11 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 [14/Jun/2021 11:48:37] WARNING [django.server:161] "GET /favicon.ico HTTP/1.1" 404 2537
 [14/Jun/2021 11:51:20] INFO [django.utils.autoreload:250] /workspace/mysite/settings.py changed, reloading.
 [14/Jun/2021 11:51:20] INFO [django.utils.autoreload:250] /workspace/mysite/settings.py changed, reloading.
+<<<<<<< HEAD
 [16/Jun/2021 11:25:54] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
 [16/Jun/2021 11:25:59] WARNING [django.request:224] Not Found: /
 [16/Jun/2021 11:25:59] WARNING [django.server:161] "GET / HTTP/1.1" 404 2486
 [16/Jun/2021 11:25:59] WARNING [django.request:224] Not Found: /favicon.ico
 [16/Jun/2021 11:25:59] WARNING [django.server:161] "GET /favicon.ico HTTP/1.1" 404 2537
+=======
+>>>>>>> graphql_auth

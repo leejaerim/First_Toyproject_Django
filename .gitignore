@@ -1,3 +1,8 @@
 .env
 .vscode
+<<<<<<< HEAD
 ./log/toy_prject.log
+=======
+log/toy_prject.log
+mysite/__pycache__
+>>>>>>> graphql_auth
