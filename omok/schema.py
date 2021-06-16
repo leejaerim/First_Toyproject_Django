@@ -7,9 +7,7 @@ class RoomType(DjangoObjectType):
     class Meta:
         model = Room
         field = ("id", "title", "hasPassword", "isAvailable")
-        exclude_fields = [
-            'password',  #it worked          
-        ]
+        exclude = ("password", "user")
 
 
 class UserType(DjangoObjectType):
@@ -43,24 +41,17 @@ class CreateRoom(graphene.Mutation):
         user = graphene.Argument(UserInput)
 
     id = graphene.ID()
-    title = graphene.String()
-    isAvailable = graphene.Boolean()
-    hasPassword = graphene.Boolean()
-    user = graphene.Field(UserType)
 
-    def mutate(self, info, title, user, password = None):
-        _hasPassword = 0 if password is None else 1
-        _user = User(id=user.id, name=user.name)
-        room = Room.objects.create(title=title,
-                                   password=password,
-                                   isAvailable=True,
-                                   hasPassword=_hasPassword,
-                                   user=_user)
-        return CreateRoom(id=room.id,
-                          title=title,
-                          isAvailable=True,
-                          hasPassword=False if password is None else True,
-                          user=_user)
+    def mutate(self, info, title, user, password=None):
+        if info.context.session.exists(user.id):
+            _hasPassword = 0 if password is None else 1
+            _user = User(id=user.id, name=user.name)
+            room = Room.objects.create(title=title,
+                                       password=password,
+                                       isAvailable=True,
+                                       hasPassword=_hasPassword,
+                                       user=_user)
+            return CreateRoom(id=room.id)
 
 
 class UpdateUser(graphene.Mutation):
@@ -91,7 +82,7 @@ class UpdateRoom(graphene.Mutation):
     hasPassword = graphene.Boolean()
     user = graphene.Field(UserType)
 
-    def mutate(self, info, id, title, user, isAvailable, password = None):
+    def mutate(self, info, id, title, user, isAvailable, password=None):
         _hasPassword = 0 if password is None else 1
         _user = User(id=user.id, name=user.name)
         room = Room.objects.get(pk=id)
@@ -122,12 +113,14 @@ class DeleteUser(graphene.Mutation):
 class DeleteRoom(graphene.Mutation):
     class Arguments:
         id = graphene.ID()
-        #user = graphene.Argument(UserInput)
+        userId = graphene.ID()
 
     id = graphene.ID()
 
-    def mutate(self, info, id):
+    def mutate(self, info, id, userId):
         room = Room.objects.get(pk=id)
-        if room is not None:
+        if room is not None and room.user.id is userId:
             room.delete()
-        return DeleteRoom(id=id)
+            return DeleteRoom(id=id)
+        else:
+            print('delete fail')
