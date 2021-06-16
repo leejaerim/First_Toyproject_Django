@@ -1,2 +1,4 @@
 .env
 .vscode
+log/toy_prject.log
+mysite/__pycache__
