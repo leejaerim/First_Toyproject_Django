@@ -3,3 +3,4 @@
 *.log
 mysite/__pycache__
 __pycache__
+.devcontainer

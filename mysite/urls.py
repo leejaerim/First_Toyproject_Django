@@ -25,7 +25,7 @@ from mysite.schema import schema
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('omok/', include('omok.urls')),
-    path('todo/', include('todolist.urls')),
+    
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
 ]
