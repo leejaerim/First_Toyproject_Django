@@ -1,6 +1,8 @@
 import graphene
+from django.contrib.sessions.backends.db import SessionStore
 from graphene_django import DjangoObjectType
 from .models import User, Room
+from .session import get_name
 
 
 class RoomType(DjangoObjectType):
@@ -23,15 +25,21 @@ class UserInput(graphene.InputObjectType):
 
 class CreateUser(graphene.Mutation):
     class Arguments:
-        name = graphene.String()
+        id = graphene.ID()
 
     id = graphene.ID()
     name = graphene.String()
 
-    def mutate(self, info, name):
-        user = User.objects.create(name=name)
-        user.save()
-        return CreateUser(id=user.id, name=name)
+    def mutate(self, info, id):
+        s: SessionStore = info.context.session
+        if s.exists(id):
+            return CreateUser(id=id, name=s.get('name'))
+        else:
+            s.create()
+            s.set_expiry(0)  # expire when browser is closed
+            s.setdefault('name', get_name())
+            s.save()
+            return CreateUser(id=s.session_key, name=s.get('name'))
 
 
 class CreateRoom(graphene.Mutation):
@@ -63,9 +71,11 @@ class UpdateUser(graphene.Mutation):
     name = graphene.String()
 
     def mutate(self, info, id, name):
-        user = User.objects.get(pk=id)
-        user.name = name
-        return UpdateUser(id=id, name=name)
+        s: SessionStore = info.context.session
+        if s.exists(id):
+            s.setdefault('name', name)
+            s.save()
+            return UpdateUser(id=id, name=s.get('name'))
 
 
 class UpdateRoom(graphene.Mutation):
@@ -107,7 +117,7 @@ class DeleteUser(graphene.Mutation):
         user = User.objects.get(pk=id)
         if user is not None:
             user.delete()
-        return DeleteUser(id=id)
+            return DeleteUser(id=id)
 
 
 class DeleteRoom(graphene.Mutation):
@@ -122,5 +132,3 @@ class DeleteRoom(graphene.Mutation):
         if room is not None and room.user.id is userId:
             room.delete()
             return DeleteRoom(id=id)
-        else:
-            print('delete fail')

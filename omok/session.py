@@ -1,10 +1,5 @@
-from django.http import JsonResponse
-from datetime import datetime
-from django.contrib.sessions.backends.db import SessionStore
-from django.views.decorators.csrf import csrf_exempt
-from django.views import View
-import json
 import random
+
 nouns = [
     'people',
     'history',
@@ -99,22 +94,5 @@ nouns = [
 ]
 
 
-@csrf_exempt
-def session(request):
-    body = json.loads(request.body)
-    s = SessionStore()
-    if(s.exists(body.get('sid'))):
-        s = SessionStore(session_key=body.get('sid'))
-        return JsonResponse({
-            'id': s.session_key,
-            'name': s.get('name')
-        })
-    else:
-        s.create()
-        s.set_expiry(0) #expire when browser is closed
-        s.setdefault('name', random.choice(nouns))
-        s.save()
-        return JsonResponse({
-            'id': s.session_key,
-            'name': s.get('name')
-        })
+def get_name():
+    return random.choice(nouns)
