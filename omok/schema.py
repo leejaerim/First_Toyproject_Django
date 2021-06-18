@@ -33,7 +33,8 @@ class CreateUser(graphene.Mutation):
     def mutate(self, info, id):
         s: SessionStore = info.context.session
         if s.exists(id):
-            return CreateUser(id=id, name=s.get('name'))
+            name = SessionStore(session_key=id).get('name')
+            return CreateUser(id=id, name=name)
         else:
             s.create()
             s.set_expiry(0)  # expire when browser is closed
