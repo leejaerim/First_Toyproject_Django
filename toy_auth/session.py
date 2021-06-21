@@ -1,98 +1,21 @@
-import random
-
-nouns = [
-    'people',
-    'history',
-    'way',
-    'art',
-    'world',
-    'information',
-    'map',
-    'two',
-    'family',
-    'government',
-    'health',
-    'system',
-    'computer',
-    'meat',
-    'year',
-    'thanks',
-    'music',
-    'person',
-    'reading',
-    'method',
-    'data',
-    'food',
-    'understanding',
-    'theory',
-    'law',
-    'bird',
-    'literature',
-    'problem',
-    'software',
-    'control',
-    'knowledge',
-    'power',
-    'ability',
-    'economics',
-    'love',
-    'internet',
-    'television',
-    'science',
-    'library',
-    'nature',
-    'fact',
-    'product',
-    'idea',
-    'temperature',
-    'investment',
-    'area',
-    'society',
-    'activity',
-    'story',
-    'industry',
-    'media',
-    'thing',
-    'oven',
-    'community',
-    'definition',
-    'safety',
-    'quality',
-    'development',
-    'language',
-    'management',
-    'player',
-    'variety',
-    'video',
-    'week',
-    'security',
-    'country',
-    'exam',
-    'movie',
-    'organization',
-    'equipment',
-    'physics',
-    'analysis',
-    'policy',
-    'series',
-    'thought',
-    'basis',
-    'boyfriend',
-    'direction',
-    'strategy',
-    'technology',
-    'army',
-    'camera',
-    'freedom',
-    'paper',
-    'environment',
-    'child',
-    'instance',
-    'month',
-    'truth',
-    'marketing',
-]
-
-
+import random, string
 def get_name():
-    return random.choice(nouns)
+    # get user input
+    # read word lists
+    with open('nouns.txt', 'r') as infile:
+        nouns = infile.read().strip(' \n').split('\n')
+    with open('adjectives.txt', 'r') as infile:
+        adjectives = infile.read().strip(' \n').split('\n')
+    # generate usernames
+    # construct username
+    word1 = random.choice(adjectives)
+    word2 = random.choice(nouns)
+    #else make and print the username
+    #captilaize first letter
+    word1 =word1.title()
+    word2 =word2.title()
+    username = '{}{}'.format(word1, word2)
+    # success
+    print(username)
+    return username
+

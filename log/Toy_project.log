@@ -685,3 +685,9 @@ KeyError: 'kakao_account'
 [21/Jun/2021 10:01:09] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
 [21/Jun/2021 10:01:19] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 52
 [21/Jun/2021 10:02:51] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 52
+[21/Jun/2021 12:09:09] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[21/Jun/2021 12:09:14] WARNING [django.request:224] Not Found: /
+[21/Jun/2021 12:09:14] WARNING [django.server:161] "GET / HTTP/1.1" 404 2167
+[21/Jun/2021 12:09:19] INFO [django.server:161] "GET /graphql/ HTTP/1.1" 200 2081
+[21/Jun/2021 12:09:19] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 32531
+[21/Jun/2021 12:09:21] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 160

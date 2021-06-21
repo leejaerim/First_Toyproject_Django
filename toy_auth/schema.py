@@ -8,6 +8,8 @@ from .session import get_name
 from toy_auth.models import User
 
 
+
+
 class UserType(DjangoObjectType):
     class Meta:
         model = User
@@ -48,29 +50,20 @@ class CreateUser(graphene.Mutation):
                         id=user.id,
                         name=user.name
                     )
-
-        else:  # when access token is not given
+        else :  # when access token is not given
             s: SessionStore = info.context.session
-            try:
+            if s.exists(session_key=sid):
                 user = User.objects.get(session_id=sid)
                 print('session exist')
-                return CreateUser(
-                    id=user.id,
-                    name=user.name
-                )
-            except User.DoesNotExist:
+                return CreateUser(id=user.id, name=user.name)
+            else:
                 s.create()
                 s.set_expiry(0)  # expire when browser is closed
-                user = User.objects.create(
-                    name=get_name(),
-                    session_id=s.session_key
-                )
+                s.save()
+                user = User.objects.create(name=get_name(),
+                                           session_id=s.session_key)
                 print('create new guest !!')
-                return CreateUser(
-                    id=user.id,
-                    name=user.name
-                )
-
+                return CreateUser(id=user.id, name=user.name)
 
 class UpdateUser(graphene.Mutation):
     class Arguments:

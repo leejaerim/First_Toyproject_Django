@@ -5,7 +5,7 @@ class User(models.Model):
     kakao_id = models.CharField(
         max_length=30, blank=True, null=True, unique=True)
     session_id = models.CharField(
-        max_length=30, blank=True, null=True, unique=True)
+        max_length=50, blank=True, null=True, unique=True)
     
     class Meta:
         db_table = 'user'
