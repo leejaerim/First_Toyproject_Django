@@ -8,7 +8,7 @@ class Todo(models.Model):
     user = models.ForeignKey(User, on_delete=deletion.CASCADE)
 
     def __str__(self):
-        return f'id: {self.id}, text: {self.text}, isCompleted : {self.isCompleted}'
+        return f'Todo of user : {self.user} id: {self.id}, text: {self.text}, isCompleted : {self.isCompleted}'
 
     class Meta:
         db_table = 'todo'
