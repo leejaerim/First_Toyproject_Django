@@ -3,7 +3,7 @@ from .models import Todo
 
 
 class TodoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'text', 'isCompleted')
+    list_display = ('id', 'text', 'isCompleted', 'user')
 
 
 admin.site.register(Todo, TodoAdmin)

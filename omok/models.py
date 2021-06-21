@@ -1,13 +1,5 @@
 from django.db import models
-
-
-class User(models.Model):
-    name = models.CharField(max_length=16, default="Guest")
-    #reg_date = models.DateTimeField(auto_now_add=True,null=True)
-
-    class Meta:
-        db_table = 'user'
-
+from toy_auth.models import User
 
 class Room(models.Model):
     title = models.CharField(max_length=30)
