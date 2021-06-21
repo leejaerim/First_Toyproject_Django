@@ -1,5 +1,6 @@
 Django==3.2.2
-djangorestframework
 mysqlclient
 django-cors-headers
 graphene-django
+django-allauth
+requests

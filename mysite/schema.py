@@ -2,27 +2,19 @@ import graphene
 from graphene_django.debug import DjangoDebug
 from todolist.models import Todo
 from todolist.schema import TodoType, CreateTodo, UpdateTodo, DeleteTodo
-from omok.models import User, Room
-from omok.schema import CreateUser, UpdateRoom, UpdateUser, UserType, RoomType, CreateRoom, DeleteRoom
-
+from omok.models import Room
+from omok.schema import UpdateRoom, RoomType, CreateRoom, DeleteRoom
+from toy_auth.schema import CreateUser, UpdateUser, DeleteUser, UserType
 
 class Query(graphene.ObjectType):
     todos = graphene.List(TodoType)
     todo = graphene.Field(TodoType, id=graphene.ID())
-    #users = graphene.List(UserType)
-    #user = graphene.Field(UserType, id=graphene.ID())
     rooms = graphene.List(RoomType)
     room = graphene.Field(RoomType,
                           id=graphene.ID(),
                           password=graphene.String(),
                           user_id=graphene.String())
     debug = graphene.Field(DjangoDebug, name='_debug')
-
-    def resolve_users(self, info, **kwargs):
-        return User.objects.all()
-
-    def resolve_user(self, info, id):
-        return User.objects.get(pk=id)
 
     def resolve_rooms(self, info, **kwargs):
         return Room.objects.all()

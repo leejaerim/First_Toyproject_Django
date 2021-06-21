@@ -31,12 +31,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'toy_auth.apps.AuthConfig',
     'omok.apps.OmokConfig',
     'todolist.apps.TodolistConfig',
-    'rest_framework',
     'corsheaders',
     'graphene_django'
 ]
+
 
 GRAPHENE = {
     "SCHEMA": "mysite.schema.schema",
@@ -44,18 +46,7 @@ GRAPHENE = {
         'graphene_django.debug.DjangoDebugMiddleware',
     ]
 }
-REST_FRAMEWORK = {
-#      'DEFAULT_AUTHENTICATION_CLASSES': (
-#        'rest_framework.authentication.TokenAuthentication',
-#    ),
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    # ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [],
-    'DEFAULT_PERMISSION_CLASSES': [],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 100
-}
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -67,15 +58,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-#CORS_ORIGIN_ALLOW_ALL = True
+
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     os.environ.get('DJANGO_HOST'),
 ]
-
-CORS_ALLOW_CREDENTIALS = True
-
 
 ROOT_URLCONF = 'mysite.urls'
 
