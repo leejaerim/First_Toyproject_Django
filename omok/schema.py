@@ -2,7 +2,7 @@ import graphene
 from graphene_django import DjangoObjectType
 from .models import Room
 from toy_auth.models import User
-from toy_auth.schema import UserInput, UserType
+from toy_auth.types import UserInput, UserType
 
 
 class RoomType(DjangoObjectType):

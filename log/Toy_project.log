@@ -1048,3 +1048,41 @@ django.db.utils.ProgrammingError: (1146, "Table 'todo_dev.todo' doesn't exist")
 [21/Jun/2021 14:12:34] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 21
 [21/Jun/2021 14:12:57] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 34
 [21/Jun/2021 14:13:06] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 76
+[22/Jun/2021 00:41:20] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 01:05:42] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 01:06:09] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[22/Jun/2021 01:06:11] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 01:06:16] INFO [django.server:161] "GET /graphql/ HTTP/1.1" 200 2081
+[22/Jun/2021 01:06:16] INFO [django.server:161] "GET /static/graphene_django/graphiql.js HTTP/1.1" 200 5992
+[22/Jun/2021 01:06:16] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 28729
+[22/Jun/2021 01:06:56] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 31
+[22/Jun/2021 01:13:43] INFO [django.utils.autoreload:250] /workspace/toy_auth/session.py changed, reloading.
+[22/Jun/2021 01:13:46] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 01:13:56] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 01:14:05] INFO [django.utils.autoreload:250] /workspace/toy_auth/session.py changed, reloading.
+[22/Jun/2021 01:14:07] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 02:42:28] INFO [django.utils.autoreload:250] /workspace/toy_auth/session.py changed, reloading.
+[22/Jun/2021 02:42:31] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 09:03:16] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 09:03:21] INFO [django.server:161] "GET /graphql/ HTTP/1.1" 200 2081
+[22/Jun/2021 09:03:21] INFO [django.server:161] "GET /static/graphene_django/graphiql.js HTTP/1.1" 200 5992
+[22/Jun/2021 09:03:22] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 30377
+[22/Jun/2021 09:04:28] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[22/Jun/2021 09:04:30] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 09:04:33] INFO [django.server:161] "GET /graphql/ HTTP/1.1" 200 2081
+[22/Jun/2021 09:04:34] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 30480
+[22/Jun/2021 09:04:36] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 116
+[22/Jun/2021 09:11:15] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 09:11:24] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 123
+[22/Jun/2021 09:11:47] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[22/Jun/2021 09:11:49] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 09:11:51] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 123
+[22/Jun/2021 09:13:31] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[22/Jun/2021 09:13:34] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 09:13:35] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 144
+[22/Jun/2021 09:13:50] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[22/Jun/2021 09:13:52] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 09:23:14] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jun/2021 09:23:19] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 142
+[22/Jun/2021 09:26:05] INFO [django.utils.autoreload:250] /workspace/mysite/schema.py changed, reloading.
+[22/Jun/2021 09:26:07] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader

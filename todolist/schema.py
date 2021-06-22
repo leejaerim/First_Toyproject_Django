@@ -2,7 +2,7 @@ import graphene
 from graphene_django import DjangoObjectType
 from .models import Todo
 from toy_auth.models import User
-from toy_auth.schema import UserInput
+from toy_auth.types import UserInput
 
 
 class TodoType(DjangoObjectType):
