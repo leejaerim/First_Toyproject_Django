@@ -1,19 +1,15 @@
 import graphene
+from todolist.types import TodoType
 from todolist.models import Todo
-from todolist.schema import TodoType, CreateTodo, UpdateTodo, DeleteTodo
+from todolist.schema import CreateTodo, UpdateTodo, DeleteTodo
 from omok.models import Room
 from omok.schema import UpdateRoom, RoomType, CreateRoom
-from toy_auth.models import User, isAuthenticated
+from toy_auth.models import User
 from toy_auth.schema import SignIn, SignInGuest, UpdateUser, DeleteUser
-from toy_auth.types import UserType, UserInput
+from toy_auth.types import UserInput
 
 
 class Query(graphene.ObjectType):
-    user = graphene.Field(
-        UserType,
-        id = graphene.ID()
-    )
-    
     todos = graphene.List(
         TodoType,
         user = graphene.Argument(UserInput)
@@ -28,37 +24,27 @@ class Query(graphene.ObjectType):
         password=graphene.String(),
         user=graphene.Argument(UserInput),
     )
-
-    def resolve_user(self, info, **kwargs):
-        uid = kwargs.get('id') 
-        if isAuthenticated(headers = info.context.headers, uid=uid) :
-            return User.objects.get(pk=uid)
-        else:
-            raise Exception('Unauthenticated Access')
+    
+    def resolve_todos(self, info, **kwargs):
+        _user = kwargs.get('user')
+        return Todo.objects.filter(user_id = _user.id).all()
 
     def resolve_rooms(self, info, user):
-        try:
-            user = User.objects.get(pk=user.id)
+        if User.objects.isAuthenticated(info, user.id):
             return Room.objects.all()
-        except User.DoesNotExist:
+        else:
             return Room.objects.none()
 
     def resolve_room(self, info, **kwargs):
         user = kwargs.get('user')
         rid = kwargs.get('id')
         password = kwargs.get('password')
-        try:
-            user = User.objects.get(pk=user.id)
-            return Room.objects.get(pk=rid, password=password)
-        except User.DoesNotExist:
-            return Room.objects.none()
-        except Room.DoesNotExist:
-            return Room.objects.none()
+        if User.objects.isAuthenticated(info, user.id):
+            return Room.objects.filter(pk=rid, password=password).first()
+        else:
+            raise Exception("Unauthenticated Access")
  
-    def resolve_todos(self, info, **kwargs):
-        _user = kwargs.get('user')
-        return Todo.objects.filter(user_id = _user.id).all()
-
+   
 
 class Mutation(graphene.ObjectType):
     sign_in = SignIn.Field()

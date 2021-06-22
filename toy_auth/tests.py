@@ -1,47 +1,47 @@
 import pytest
-from .test_schema import schema
+from mysite.schema import schema
+from graphene.test import Client
+from django.test import TestCase
 
 @pytest.mark.django_db
-def test_query_should_return_user():
-    query = """
-        query {
-            user(id:"1") {
-                id
-                name
+class TestUserSchema(TestCase):
+    def setUp(self):
+        self.client = Client(schema)
+
+    def test_create_user(self):
+        query = """
+            mutation 
+            {
+                signInGuest {
+                    id
+                    name
+                    sid
+                }
             }
-        }
-    """
-    result = schema.execute(query, context_value = {"headers": {'authorization':'kk57vea3ara1kjkn8462mah4vgjdx35z'}})
-    assert not result.errors
-    assert result.user is {'id': 1, 'name': 'DimCigarette'}
+        """
+        response = self.client.execute(
+            query,
+            context_value = {'headers':{'authorization':''}},
+        )
 
+        assert response.get('data') is not None 
+        
+    def test_update_name(self):
+        query = """
+            mutation ($id: ID!, $name: String)
+            {
+                updateUser(id:$id, name:$name) {
+                    id
+                    name
+                }
+            }
+        """
+        response = self.client.execute(
+            query,
+            context_value = {'headers':{'authorization':'4hmkmq80atf6fd552xcstrb6iw9qmkam'}},
+            variables = {'id': 3, 'name': 'JJJ'}
+        )
 
-# def test_query_should_raise_error():
-#     with pytest.raises(Exception):
-
-#         query = """
-#         query {
-#             user(id:"1") {
-#                 id
-#                 name
-#             }
-#         }
-#         """
-#         result = schema.execute(query, context_value = {"headers": {'authorization':'aa'}})
-#         assert result.errors
-
-
-# def test_sign_in_guest():
-#     query = """py
-#         mutation {
-#             signInGuest {
-#                 id
-#                 name
-#                 sid
-#             }
-#         }
-#     """
-#     result = schema.execute(query, context_value = {"headers": {'authorization':''}})
-#     assert not result.errors
-
+        assert response.get('data').get('name') is 'JJJ' 
+        
 

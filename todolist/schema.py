@@ -1,14 +1,7 @@
 import graphene
-from graphene_django import DjangoObjectType
 from .models import Todo
 from toy_auth.models import User
 from toy_auth.types import UserInput
-
-
-class TodoType(DjangoObjectType):
-    class Meta:
-        model = Todo
-        field = ("id", "text", "isCompleted", "user")
 
 
 class CreateTodo(graphene.Mutation):
@@ -35,7 +28,7 @@ class CreateTodo(graphene.Mutation):
                                        user=user)
             return CreateTodo(id=todo.id, text=text, isCompleted=isCompleted)
         except User.DoesNotExist:
-            raise Exception('Unauthenticated User Access')
+            raise Exception('Unauthenticated Access')
 
 
 class UpdateTodo(graphene.Mutation):

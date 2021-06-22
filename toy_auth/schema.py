@@ -2,7 +2,7 @@ import graphene
 import requests
 import json
 
-from toy_auth.models import User, GuestUser, KakaoUser, isAuthenticated
+from toy_auth.models import User, GuestUser, KakaoUser
 
 
 class SignIn(graphene.Mutation):
@@ -11,7 +11,7 @@ class SignIn(graphene.Mutation):
     name = graphene.String()
 
     def mutate(self, info):
-        token = info.context.headers['authorization']
+        token = info.context.headers.get('authorization')
         profile_url = "https://kapi.kakao.com/v2/user/me"
         response = requests.request('get', profile_url, headers={
             'Authorization': 'Bearer {}'.format(token)
@@ -34,7 +34,7 @@ class SignInGuest(graphene.Mutation):
     sid = graphene.String()
 
     def mutate(self, info):
-        token = info.context.headers['authorization']
+        token = info.context.headers.get('authorization')
         user = GuestUser.objects.signIn(token=token)
         return SignInGuest(id=user.id, name=user.name, sid=user.token)
 
@@ -48,8 +48,8 @@ class UpdateUser(graphene.Mutation):
     name = graphene.String()
 
     def mutate(self, info, id, name):
-        if isAuthenticated(headers=info.context.headers, uid=id):
-            user = User.objects.get(pk=id)
+        user = User.objects.fromToken(info, id)
+        if user is not None:
             user.name = name
             user.save()
             return UpdateUser(id=id, name=name)
@@ -64,8 +64,8 @@ class DeleteUser(graphene.Mutation):
     id = graphene.ID()
 
     def mutate(self, info, id):
-        if isAuthenticated(headers=info.context.headers, uid=id):
-            user = User.objects.get(pk=id)
+        user = User.objects.fromToken(info, id)
+        if user is not None:
             user.delete()
             return DeleteUser(id=id)
         else:
