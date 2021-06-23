@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from toy_auth.middleware import passTokenTest
+from toy_auth.middleware import passToken
 from django.contrib import admin
 from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
@@ -31,8 +31,9 @@ urlpatterns = [
             GraphQLView.as_view(
                 graphiql=True,
                 schema=schema,
-                #use for test
-                #middleware=[passTokenTest]
+                # use middleware when not using header token
+                # default user id is set to 1
+                # middleware=[passToken]
             )
         )
     ),

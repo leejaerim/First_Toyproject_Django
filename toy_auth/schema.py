@@ -1,4 +1,4 @@
-from toy_auth.middleware import checkToken
+from toy_auth.middleware import checkToken, passTokenTest, superUserRequired
 import graphene
 import requests
 import json
@@ -48,14 +48,17 @@ class UpdateUser(graphene.Mutation):
     class Arguments:
         name = graphene.String()
 
+    id = graphene.ID()
     name = graphene.String()
 
     @checkToken
     def mutate(self, info, name):
+        print('user id is')
+        print(info.context.uid)
         user = User.objects.get(pk=info.context.uid)
         user.name = name
         user.save()
-        return UpdateUser(id=id, name=name)
+        return UpdateUser(id=user.id, name=name)
         
 
 class DeleteUser(graphene.Mutation):
@@ -64,8 +67,8 @@ class DeleteUser(graphene.Mutation):
 
     id = graphene.ID()
 
-    @checkToken
+    @superUserRequired
     def mutate(self, info, id):
-        user = User.objects.get(pk=info.context.uid)
+        user = User.objects.get(pk=id)
         user.delete()
         return DeleteUser(id=id)

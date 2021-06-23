@@ -1,20 +1,27 @@
+import os
 from functools import wraps
 from datetime import datetime, timedelta
 from toy_auth.models import User
 
-
+## for pytest
 def passTokenTest(next, root, info, **args):
     info.context.passTokenCheck = True
     return next(root, info, **args)
 
 
+def passToken(next, root, info, **args):
+    info.context.passTokenCheck = True
+    info.context.uid = 1
+    return next(root, info, **args)
+
+
 def checkToken(resolve_func):
     @wraps(resolve_func)
-    def resolve(self, info, **kwargs):         
+    def resolve(self, info, **kwargs):
         if hasattr (info.context, 'passTokenCheck'):
             print('I am running test')
-            info.context.uid = 1
             return resolve_func(self, info, **kwargs)
+        
 
         if hasattr (info.context, 'headers') :
             token = info.context.headers.get('authorization')
@@ -22,6 +29,18 @@ def checkToken(resolve_func):
             if user :
                 info.context.uid = user.id 
                 return resolve_func(self, info, **kwargs)
+        
+        raise Exception('Unauthenticated Access')
+    return resolve
+
+
+def superUserRequired(resolve_func):
+    @wraps(resolve_func)
+    def resolve(self, info, **kwargs):
+        adminKey = info.context.adminKey
+        if adminKey == os.environ['SECRET_KEY']:
+            print('super user verified')
+            return resolve_func(self, info, **kwargs)
         
         raise Exception('Unauthenticated Access')
     return resolve
@@ -35,7 +54,7 @@ def jwt_cookie(view_func):
         expires = datetime.now() + timedelta(seconds=100000)
 
         response = view_func(request, *args, **kwargs)
-        response.set_cookie('__ttk__',
+        response.set_cookie('_ttk_',
                             'nono',
                             expires=expires,
                             httponly = True)

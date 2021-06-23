@@ -1,45 +1,43 @@
-from toy_auth.middleware import checkToken, passTokenTest
 import graphene
+from toy_auth.middleware import checkToken, superUserRequired
 from todolist.types import TodoType
 from todolist.models import Todo
 from todolist.schema import CreateTodo, UpdateTodo, DeleteTodo
 from omok.models import Room
-from omok.schema import UpdateRoom, RoomType, CreateRoom
+from omok.schema import UpdateRoom, CreateRoom, DeleteRoom
+from omok.types import RoomType
 from toy_auth.models import User
+from toy_auth.types import UserType
 from toy_auth.schema import SignIn, SignInGuest, UpdateUser, DeleteUser
-from toy_auth.types import UserInput
 
 
 class Query(graphene.ObjectType):
+    users = graphene.List(UserType)
     todos = graphene.List(TodoType)
-    rooms = graphene.List(
-        RoomType,
-        user = graphene.Argument(UserInput)
-    )
+    rooms = graphene.List(RoomType)
     room = graphene.Field(
         RoomType,
         id=graphene.ID(),
         password=graphene.String(),
-        user=graphene.Argument(UserInput),
     )
     
+    @superUserRequired
+    def resolve_users(self, info, **kwargs):
+        return User.objects.all()
+
     @checkToken
     def resolve_todos(self, info, **kwargs):
         return Todo.objects.filter(user_id = info.context.uid).all()
 
     @checkToken
-    def resolve_rooms(self, info, user):
+    def resolve_rooms(self, info, **kwargs):
         return Room.objects.filter(user_id = info.context.uid).all()
 
+    @checkToken
     def resolve_room(self, info, **kwargs):
-        user = kwargs.get('user')
         rid = kwargs.get('id')
         password = kwargs.get('password')
-        if User.objects.isAuthenticated(info, user.id):
-            return Room.objects.filter(pk=rid, password=password).first()
-        else:
-            raise Exception("Unauthenticated Access")
- 
+        return Room.objects.filter(pk=rid, password=password).first()
    
 
 class Mutation(graphene.ObjectType):
@@ -54,6 +52,7 @@ class Mutation(graphene.ObjectType):
 
     create_room = CreateRoom.Field()
     update_room = UpdateRoom.Field()
+    delete_room = DeleteRoom.Field()
     
     
 
