@@ -1,3 +1,4 @@
+from toy_auth.middleware import checkToken, passTokenTest
 import graphene
 from todolist.types import TodoType
 from todolist.models import Todo
@@ -10,10 +11,7 @@ from toy_auth.types import UserInput
 
 
 class Query(graphene.ObjectType):
-    todos = graphene.List(
-        TodoType,
-        user = graphene.Argument(UserInput)
-    )
+    todos = graphene.List(TodoType)
     rooms = graphene.List(
         RoomType,
         user = graphene.Argument(UserInput)
@@ -25,15 +23,13 @@ class Query(graphene.ObjectType):
         user=graphene.Argument(UserInput),
     )
     
+    @checkToken
     def resolve_todos(self, info, **kwargs):
-        _user = kwargs.get('user')
-        return Todo.objects.filter(user_id = _user.id).all()
+        return Todo.objects.filter(user_id = info.context.uid).all()
 
+    @checkToken
     def resolve_rooms(self, info, user):
-        if User.objects.isAuthenticated(info, user.id):
-            return Room.objects.all()
-        else:
-            return Room.objects.none()
+        return Room.objects.filter(user_id = info.context.uid).all()
 
     def resolve_room(self, info, **kwargs):
         user = kwargs.get('user')

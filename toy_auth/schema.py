@@ -1,3 +1,4 @@
+from toy_auth.middleware import checkToken
 import graphene
 import requests
 import json
@@ -6,22 +7,26 @@ from toy_auth.models import User, GuestUser, KakaoUser
 
 
 class SignIn(graphene.Mutation):
+    class Arguments:
+        token = graphene.String()
 
     id = graphene.ID()
     name = graphene.String()
+    token = graphene.String()
 
-    def mutate(self, info):
-        token = info.context.headers.get('authorization')
+    def mutate(self, info, token):
         profile_url = "https://kapi.kakao.com/v2/user/me"
         response = requests.request('get', profile_url, headers={
             'Authorization': 'Bearer {}'.format(token)
         })
         info = json.loads(response.content)
-        if info['id'] is not None:
-            user = KakaoUser.objects.signIn(kakao_id=info['id'], token=token)
+        print(info)
+        if  info.get('id') is not None :
+            user = KakaoUser.objects.signIn(kakao_id=info['id'])
             return SignIn(
                 id=user.id,
-                name=user.name
+                name=user.name,
+                token=user.token
             )
         else:
             raise Exception('Invalid Access Token')
@@ -31,31 +36,27 @@ class SignInGuest(graphene.Mutation):
 
     id = graphene.ID()
     name = graphene.String()
-    sid = graphene.String()
+    token = graphene.String()
 
     def mutate(self, info):
         token = info.context.headers.get('authorization')
         user = GuestUser.objects.signIn(token=token)
-        return SignInGuest(id=user.id, name=user.name, sid=user.token)
+        return SignInGuest(id=user.id, name=user.name, token=user.token)
 
 
 class UpdateUser(graphene.Mutation):
     class Arguments:
-        id = graphene.ID()
         name = graphene.String()
 
-    id = graphene.ID()
     name = graphene.String()
 
-    def mutate(self, info, id, name):
-        user = User.objects.fromToken(info, id)
-        if user is not None:
-            user.name = name
-            user.save()
-            return UpdateUser(id=id, name=name)
-        else:
-            raise Exception('Unauthenticated Access')
-
+    @checkToken
+    def mutate(self, info, name):
+        user = User.objects.get(pk=info.context.uid)
+        user.name = name
+        user.save()
+        return UpdateUser(id=id, name=name)
+        
 
 class DeleteUser(graphene.Mutation):
     class Arguments:
@@ -63,10 +64,8 @@ class DeleteUser(graphene.Mutation):
 
     id = graphene.ID()
 
+    @checkToken
     def mutate(self, info, id):
-        user = User.objects.fromToken(info, id)
-        if user is not None:
-            user.delete()
-            return DeleteUser(id=id)
-        else:
-            raise Exception('Unauthenticated Access')
+        user = User.objects.get(pk=info.context.uid)
+        user.delete()
+        return DeleteUser(id=id)

@@ -1,22 +1,19 @@
 from django.contrib.sessions.backends.db import SessionStore
 from django.db import models
 from django.db.models import QuerySet
-from django.db.models.query import EmptyQuerySet
 import random
-
+import os
+import binascii
 
 class UserManager(models.Manager):
-    def isAuthenticated(self, info, id) -> bool:
-        token = info.context.headers.get('authorization')
-        if token is None:
-            return False
+    def get_token(self)->str:
+        token = binascii.hexlify(os.urandom(20)).decode()
+        dup = self.filter(token=token).count()
+        if dup is 0:
+            return token
         else:
-            return self.filter(pk=id, token=token) is not EmptyQuerySet
-    
-    def fromToken(self, info, id):
-        token = info.context.headers.get('authorization')
-        return self.filter(pk=id, token = token).first()
-    
+            return self.get_token()
+
     def get_name(self)->str:
         with open('nouns.txt', 'r') as infile:
             nouns = infile.read().strip(' \n').split('\n')
@@ -59,14 +56,15 @@ class KakaoUserManager(models.Manager):
 
     def signIn(self, **kwargs) -> User:
         kakao_id = kwargs.get('kakao_id')
-        token = kwargs.get('token')
+        token = User.objects.get_token()
         try:
-            user = self.get(kakao_id=kakao_id)
+            user = User.objects.get(kakao_id=kakao_id)
             user.token = token
             user.save()
             print('user sign in!!')
             return user
         except User.DoesNotExist:
+            print('no user with {}'.format(kakao_id))
             user = self.create(
                 name= User.objects.get_name(),
                 kakao_id=kakao_id,
@@ -84,7 +82,7 @@ class GuestUserManager(models.Manager):
         token = kwargs.get('token')
         s = SessionStore()
         if s.exists(session_key=token) :
-            user = self.get(token = token)
+            user = User.objects.get(token = token)
             print('guest exists!!')
             return user
         else :

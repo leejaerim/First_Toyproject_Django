@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from toy_auth.middleware import passTokenTest
 from django.contrib import admin
 from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
@@ -24,6 +25,15 @@ from mysite.schema import schema
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
+    path(
+        "graphql/", 
+        csrf_exempt(
+            GraphQLView.as_view(
+                graphiql=True,
+                schema=schema,
+                #use for test
+                #middleware=[passTokenTest]
+            )
+        )
+    ),
 ]
-
