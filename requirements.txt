@@ -2,5 +2,5 @@ Django==3.2.2
 mysqlclient
 django-cors-headers
 graphene-django
-django-allauth
 requests
+pytest-django
