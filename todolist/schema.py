@@ -1,8 +1,16 @@
+from todolist.types import TodoType
 from toy_auth.middleware import checkToken
 import graphene
 from .models import Todo
 from toy_auth.models import User
 
+
+class TodoQuery(graphene.ObjectType):
+    todos = graphene.List(TodoType)
+    
+    @checkToken
+    def resolve_todos(self, info, **kwargs):
+        return Todo.objects.filter(user_id = info.context.uid).all()
 
 class CreateTodo(graphene.Mutation):
     class Arguments:
@@ -73,3 +81,9 @@ class DeleteTodo(graphene.Mutation):
                 return DeleteTodo(id=id)
         except Todo.DoesNotExist:
             raise Exception('Invalid Todo Object')
+
+
+class TodoMutation(graphene.ObjectType):
+    create_todo = CreateTodo.Field()
+    update_todo = UpdateTodo.Field()
+    delete_todo = DeleteTodo.Field()

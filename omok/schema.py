@@ -1,7 +1,28 @@
+from omok.types import RoomType
 import graphene
 from .models import Room
 from toy_auth.models import User
 from toy_auth.middleware import checkToken, superUserRequired
+
+
+class OmokQuery(graphene.ObjectType):
+    rooms = graphene.List(RoomType)
+    room = graphene.Field(
+        RoomType,
+        id=graphene.ID(),
+        password=graphene.String(),
+    )
+
+    @checkToken
+    def resolve_rooms(self, info, **kwargs):
+        return Room.objects.all()
+
+    @checkToken
+    def resolve_room(self, info, **kwargs):
+        rid = kwargs.get('id')
+        password = kwargs.get('password')
+        return Room.objects.filter(pk=rid, password=password).first()
+
 
 class CreateRoom(graphene.Mutation):
     class Arguments:
@@ -66,3 +87,10 @@ class DeleteRoom(graphene.Mutation):
             return DeleteRoom(id=id)
         except Room.DoesNotExist:
             raise Exception('Invalid Room Object')
+
+
+class OmokMutation(graphene.ObjectType):
+    create_room = CreateRoom.Field()
+    update_room = UpdateRoom.Field()
+    delete_room = DeleteRoom.Field()
+    
