@@ -41,7 +41,6 @@ INSTALLED_APPS = [
 
 
 GRAPHENE = {
-    "SCHEMA": "mysite.schema.schema",
     'MIDDLEWARE': [
         'graphene_django.debug.DjangoDebugMiddleware',
     ]

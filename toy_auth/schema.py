@@ -1,47 +1,35 @@
-from toy_auth.middleware import checkToken, passTokenTest, superUserRequired
 import graphene
 import requests
 import json
 
+from toy_auth.middleware import checkToken, superUserRequired
 from toy_auth.models import User, GuestUser, KakaoUser
+from toy_auth.types import UserType
 
 
-class SignIn(graphene.Mutation):
-    class Arguments:
-        token = graphene.String()
+class UserQuery(graphene.ObjectType):
+    user = graphene.Field(UserType, token=graphene.String(required=False))
+    users = graphene.List(UserType)
+    
+    def resolve_user(self, info, **kwargs):
+        kakao_token = kwargs.get('token')
+        if kakao_token is None :
+            token = info.context.headers.get('authorization')
+            return GuestUser.objects.signIn(token=token)
+        else :
+            profile_url = "https://kapi.kakao.com/v2/user/me"
+            response = requests.request('get', profile_url, headers={
+                'Authorization': 'Bearer {}'.format(kakao_token)
+            })
+            info = json.loads(response.content)
+            if  info.get('id') is not None :
+                return KakaoUser.objects.signIn(kakao_id=info['id'])
+            else:
+                raise Exception('Invalid Access Token')
 
-    id = graphene.ID()
-    name = graphene.String()
-    token = graphene.String()
-
-    def mutate(self, info, token):
-        profile_url = "https://kapi.kakao.com/v2/user/me"
-        response = requests.request('get', profile_url, headers={
-            'Authorization': 'Bearer {}'.format(token)
-        })
-        info = json.loads(response.content)
-        print(info)
-        if  info.get('id') is not None :
-            user = KakaoUser.objects.signIn(kakao_id=info['id'])
-            return SignIn(
-                id=user.id,
-                name=user.name,
-                token=user.token
-            )
-        else:
-            raise Exception('Invalid Access Token')
-
-
-class SignInGuest(graphene.Mutation):
-
-    id = graphene.ID()
-    name = graphene.String()
-    token = graphene.String()
-
-    def mutate(self, info):
-        token = info.context.headers.get('authorization')
-        user = GuestUser.objects.signIn(token=token)
-        return SignInGuest(id=user.id, name=user.name, token=user.token)
+    @superUserRequired
+    def resolve_users(self, info, **kwargs):
+        return User.objects.all()
 
 
 class UpdateUser(graphene.Mutation):
@@ -72,3 +60,8 @@ class DeleteUser(graphene.Mutation):
         user = User.objects.get(pk=id)
         user.delete()
         return DeleteUser(id=id)
+    
+
+class UserMutation(graphene.ObjectType):
+    update_user = UpdateUser.Field()
+    delete_user = DeleteUser.Field()
