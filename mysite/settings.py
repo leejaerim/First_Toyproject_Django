@@ -25,21 +25,26 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'chat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'toy_auth.apps.AuthConfig',
     'omok.apps.OmokConfig',
     'todolist.apps.TodolistConfig',
     'corsheaders',
-    'graphene_django'
+    'graphene_django',
 ]
-
-
+ASGI_APPLICATION = 'mysite.routing.application'
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 GRAPHENE = {
     "SCHEMA": "mysite.schema.schema",
     'MIDDLEWARE': [
