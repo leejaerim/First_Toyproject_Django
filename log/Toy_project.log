@@ -1752,3 +1752,6 @@ AttributeError: module 'datetime' has no attribute 'utcnow'
 [24/Jun/2021 07:30:27] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 113
 [24/Jun/2021 07:30:33] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 113
 [24/Jun/2021 07:31:50] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 126
+[25/Jun/2021 01:42:22] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[25/Jun/2021 01:42:47] INFO [django.utils.autoreload:250] /workspace/toy_auth/models.py changed, reloading.
+[25/Jun/2021 01:42:50] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader

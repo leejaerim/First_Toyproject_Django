@@ -4,3 +4,4 @@ django-cors-headers
 graphene-django
 requests
 pytest-django
+django-redis
