@@ -8,18 +8,17 @@ from toy_auth.types import UserType
 
 
 class UserQuery(graphene.ObjectType):
-    user = graphene.Field(UserType, token=graphene.String(required=False))
+    user = graphene.Field(UserType, access_token=graphene.String(required=False))
     users = graphene.List(UserType)
     
-    def resolve_user(self, info, **kwargs):
-        kakao_token = kwargs.get('token')
-        if kakao_token is None :
-            token = info.context.headers.get('authorization')
-            return GuestUser.objects.signIn(token=token)
+    def resolve_user(self, info, access_token=None):
+        if access_token is None :
+            app_token = info.context.headers.get('authorization')
+            return GuestUser.objects.signIn(token=app_token)
         else :
             profile_url = "https://kapi.kakao.com/v2/user/me"
             response = requests.request('get', profile_url, headers={
-                'Authorization': 'Bearer {}'.format(kakao_token)
+                'Authorization': 'Bearer {}'.format(access_token)
             })
             info = json.loads(response.content)
             if  info.get('id') is not None :
@@ -41,8 +40,6 @@ class UpdateUser(graphene.Mutation):
 
     @checkToken
     def mutate(self, info, name):
-        print('user id is')
-        print(info.context.uid)
         user = User.objects.get(pk=info.context.uid)
         user.name = name
         user.save()

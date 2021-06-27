@@ -1,19 +1,10 @@
-from django.contrib.sessions.backends.db import SessionStore
+from django.core.cache import cache
 from django.db import models
 from django.db.models import QuerySet
 import random
-import os
-import binascii
+
 
 class UserManager(models.Manager):
-    def get_token(self)->str:
-        token = binascii.hexlify(os.urandom(20)).decode()
-        dup = self.filter(token=token).count()
-        if dup is 0:
-            return token
-        else:
-            return self.get_token()
-
     def get_name(self)->str:
         with open('nouns.txt', 'r') as infile:
             nouns = infile.read().strip(' \n').split('\n')
@@ -30,16 +21,17 @@ class UserManager(models.Manager):
 
 
 class User(models.Model):
+    GUEST = 0
+    KAKAO = 1
     USER_CHOICES = [
-        (0, 'Guest'),
-        (1, 'Kakao')
+        (GUEST, 'Guest'),
+        (KAKAO, 'Kakao')
     ]
 
-    user_type = models.IntegerField(choices=USER_CHOICES, default=0)
+    user_type = models.IntegerField(choices=USER_CHOICES, default = GUEST)
     name = models.CharField(max_length=30, null=False)
     kakao_id = models.CharField(
         max_length=30, blank=True, null=True, unique=True)
-    token = models.CharField(max_length=100, null=False)
     first_created = models.DateField(auto_now_add=True)
     last_modified = models.DateField(auto_now=True)
 
@@ -52,46 +44,53 @@ class User(models.Model):
 
 class KakaoUserManager(models.Manager):
     def get_queryset(self) -> QuerySet[User]:
-        return super().get_queryset().filter(user_type=1)
+        return super(KakaoUserManager, self).get_queryset().filter(user_type=User.KAKAO)
 
-    def signIn(self, **kwargs) -> User:
+    def create(self, *args, **kwargs) -> User:
+        kwargs.update({'user_type': User.KAKAO})
+        return super(KakaoUserManager, self).create(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        kwargs.update({'user_type': User.KAKAO})
+        return super(KakaoUserManager, self).get(*args, **kwargs)
+
+    def signIn(self, **kwargs):
         kakao_id = kwargs.get('kakao_id')
-        token = User.objects.get_token()
         try:
-            user = User.objects.get(kakao_id=kakao_id)
-            user.token = token
-            user.save()
+            user = self.get(kakao_id=kakao_id)
             print('user sign in!!')
             return user
         except User.DoesNotExist:
-            print('no user with {}'.format(kakao_id))
             user = self.create(
                 name= User.objects.get_name(),
                 kakao_id=kakao_id,
-                token = token
             )
-            print('new user registered!!')
+            print('new user registered through kakao!!')
             return user
         
 
 class GuestUserManager(models.Manager):
     def get_queryset(self) -> QuerySet[User]:
-        return super().get_queryset().filter(user_type=0)
+        return super(GuestUserManager, self).get_queryset().filter(user_type=User.GUEST)
 
-    def signIn(self, **kwargs) -> User:
+    def create(self, *args, **kwargs) -> User:
+        kwargs.update({'user_type': User.GUEST})
+        return super(GuestUserManager, self).create(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        kwargs.update({'user_type': User.GUEST})
+        return super(GuestUserManager, self).get(*args, **kwargs)
+
+    def signIn(self, **kwargs):
         token = kwargs.get('token')
-        s = SessionStore()
-        if s.exists(session_key=token) :
-            user = User.objects.get(token = token)
-            print('guest exists!!')
+        uid = cache.get(token, default=None) 
+        if uid is not None :
+            user = self.get(pk = uid)
+            print('guest sign in!!')
             return user
         else :
-            s.create()
-            s.set_expiry(0)
-            s.save()
             user = self.create(
                 name= User.objects.get_name(),
-                token = s.session_key,
             )
             print('new guest created!!')
             return user

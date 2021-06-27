@@ -10,17 +10,19 @@ class TestUserSchema(TestCase):
     def setUp(self):
         self.client = Client(schema, middleware=[passTokenTest])
         self.request = RequestFactory().get('/')
-        self.uid = GuestUser.objects.signIn(token='').pk
-
+        self.user = GuestUser.objects.signIn(token='')
+        self.uid = self.user.pk
+        
     def test_create_user(self):
         self.request.headers = {'authorization': ''}
         query = """
-            mutation 
+            query 
             {
-                signInGuest {
+                user {
                     id
                     name
                     token
+                    userType
                 }
             }
         """
@@ -28,9 +30,50 @@ class TestUserSchema(TestCase):
             query,
             context_value = self.request
         )
-
-        assert response.get('data').get('signInGuest') is not None 
         
+        ## graphql doens't support integer enum so it has prefeix 'A_'
+        assert response.get('data').get('user').get('userType') == 'A_0'
+    
+    def test_exisiting_user_query(self):
+        self.request.headers = {'authorization': ''}
+        query = """
+            query 
+            {
+                user {
+                    id
+                    name
+                    token
+                    userType
+                }
+            }
+        """
+        response = self.client.execute(
+            query,
+            context_value = self.request
+        )
+        
+        token = response.get('data').get('user').get('token')
+        id = response.get('data').get('user').get('id')
+
+        self.request.headers = {'authorization': token}
+        query = """
+            query 
+            {
+                user {
+                    id
+                    name
+                    token
+                    userType
+                }
+            }
+        """
+        response = self.client.execute(
+            query,
+            context_value = self.request
+        )
+        
+        assert response.get('data').get('user').get('id') == str(id)
+
     def test_update_name(self):
         self.request.headers = {'authorization': ''}
         self.request.uid = self.uid
@@ -49,5 +92,3 @@ class TestUserSchema(TestCase):
         )
 
         assert response.get('data').get('updateUser') == {'name':'JJJ'}
-        
-

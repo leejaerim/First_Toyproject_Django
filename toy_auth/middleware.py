@@ -1,7 +1,7 @@
 import os
 from functools import wraps
 from datetime import datetime, timedelta
-from toy_auth.models import User
+from django.core.cache import cache
 
 ## for pytest
 def passTokenTest(next, root, info, **args):
@@ -25,9 +25,12 @@ def checkToken(resolve_func):
 
         if hasattr (info.context, 'headers') :
             token = info.context.headers.get('authorization')
-            user = User.objects.filter(token=token).first()
-            if user :
-                info.context.uid = user.id 
+            uid = cache.get(token, default=None)
+            if uid :
+                #refresh timeout
+                ttl = os.environ['TOKEN_EXPIRE_TIMEOUT']
+                cache.set(token, uid, timeout = int(ttl))
+                info.context.uid = uid 
                 return resolve_func(self, info, **kwargs)
         
         raise Exception('Unauthenticated Access')
