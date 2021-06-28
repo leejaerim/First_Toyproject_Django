@@ -1,4 +1,5 @@
 FROM python:3.9.4
+RUN pip install --upgrade pip
 ENV PYTHONUNBUFFERED 1
 WORKDIR /mysite
 COPY . .

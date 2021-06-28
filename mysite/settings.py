@@ -87,7 +87,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis:6379",
+        "LOCATION": os.environ.get('REDIS_URL'),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
     }
 }
 
@@ -99,12 +102,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':os.environ.get('MARIADB_DATABASE'),
         'USER':os.environ.get('MARIADB_USER'),
-        'PASSWORD':os.environ.get('MARIADB_PASSWORD'),
+        'PASSWORD':os.environ.get('MARIADB_ROOT_PASSWORD'),
         'HOST':os.environ.get('MARIADB_ROOT_HOST'),
         'PORT':os.environ.get('MARIADB_PORT'),
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
