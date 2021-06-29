@@ -4,20 +4,21 @@ from django.db.models import QuerySet
 import random
 
 
-class UserManager(models.Manager):
-    def get_name(self)->str:
-        with open('nouns.txt', 'r') as infile:
-            nouns = infile.read().strip(' \n').split('\n')
-        with open('adjectives.txt', 'r') as infile:
-            adjectives = infile.read().strip(' \n').split('\n')
+#reference : https://github.com/purry03/Username-Generator
+#generate random username
+def generate_name()->str:
+    with open('nouns.txt', 'r') as infile:
+        nouns = infile.read().strip(' \n').split('\n')
+    with open('adjectives.txt', 'r') as infile:
+        adjectives = infile.read().strip(' \n').split('\n')
 
-        word1 = random.choice(adjectives)
-        word2 = random.choice(nouns)
-        word1 =word1.title()
-        word2 =word2.title()
-        
-        username = '{}{}'.format(word1, word2)
-        return username
+    word1 = random.choice(adjectives)
+    word2 = random.choice(nouns)
+    word1 =word1.title()
+    word2 =word2.title()
+    
+    username = '{}{}'.format(word1, word2)
+    return username
 
 
 class User(models.Model):
@@ -39,22 +40,23 @@ class User(models.Model):
         ordering = ['user_type']
         db_table = 'toy_user'
 
-    objects = UserManager()
-
 
 class KakaoUserManager(models.Manager):
     def get_queryset(self) -> QuerySet[User]:
         return super(KakaoUserManager, self).get_queryset().filter(user_type=User.KAKAO)
 
     def create(self, *args, **kwargs) -> User:
-        kwargs.update({'user_type': User.KAKAO})
+        kwargs.update({
+            'user_type': User.KAKAO,
+            'name' : generate_name()
+        })
         return super(KakaoUserManager, self).create(*args, **kwargs)
 
-    def get(self, *args, **kwargs):
+    def get(self, *args, **kwargs) -> User:
         kwargs.update({'user_type': User.KAKAO})
         return super(KakaoUserManager, self).get(*args, **kwargs)
 
-    def signIn(self, **kwargs):
+    def signIn(self, **kwargs) -> User:
         kakao_id = kwargs.get('kakao_id')
         try:
             user = self.get(kakao_id=kakao_id)
@@ -74,14 +76,17 @@ class GuestUserManager(models.Manager):
         return super(GuestUserManager, self).get_queryset().filter(user_type=User.GUEST)
 
     def create(self, *args, **kwargs) -> User:
-        kwargs.update({'user_type': User.GUEST})
+        kwargs.update({
+            'user_type': User.GUEST,
+            'name' : generate_name()
+        })
         return super(GuestUserManager, self).create(*args, **kwargs)
 
-    def get(self, *args, **kwargs):
+    def get(self, *args, **kwargs) -> User:
         kwargs.update({'user_type': User.GUEST})
         return super(GuestUserManager, self).get(*args, **kwargs)
 
-    def signIn(self, **kwargs):
+    def signIn(self, **kwargs) -> User:
         token = kwargs.get('token')
         uid = cache.get(token, default=None) 
         if uid is not None :
@@ -89,9 +94,7 @@ class GuestUserManager(models.Manager):
             print('guest sign in!!')
             return user
         else :
-            user = self.create(
-                name= User.objects.get_name(),
-            )
+            user = self.create()
             print('new guest created!!')
             return user
 

@@ -1,17 +1,13 @@
-from toy_auth.models import GuestUser
 from django.test.client import RequestFactory
 from mysite.schema import schema
 from graphene.test import Client
 from django.test import TestCase
-from .middleware import passTokenTest
 
 
 class TestUserSchema(TestCase):
     def setUp(self):
-        self.client = Client(schema, middleware=[passTokenTest])
+        self.client = Client(schema)
         self.request = RequestFactory().get('/')
-        self.user = GuestUser.objects.signIn(token='')
-        self.uid = self.user.pk
         
     def test_create_user(self):
         self.request.headers = {'authorization': ''}
@@ -33,6 +29,7 @@ class TestUserSchema(TestCase):
         
         ## graphql doens't support integer enum so it has prefeix 'A_'
         assert response.get('data').get('user').get('userType') == 'A_0'
+        assert response.get('data').get('user').get('name') is not None
     
     def test_exisiting_user_query(self):
         self.request.headers = {'authorization': ''}
@@ -76,7 +73,25 @@ class TestUserSchema(TestCase):
 
     def test_update_name(self):
         self.request.headers = {'authorization': ''}
-        self.request.uid = self.uid
+        query = """
+            query 
+            {
+                user {
+                    id
+                    name
+                    token
+                    userType
+                }
+            }
+        """
+        response = self.client.execute(
+            query,
+            context_value = self.request
+        )
+        
+        token = response.get('data').get('user').get('token')
+        self.request.headers = {'authorization': token}
+        
         query = """
             mutation ($name: String)
             {
