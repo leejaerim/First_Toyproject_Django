@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'toy_auth.apps.AuthConfig',
     'omok.apps.OmokConfig',
     'todolist.apps.TodolistConfig',
+    'mysports.apps.MysportsConfig',
     'corsheaders',
     'graphene_django'
 ]
@@ -101,6 +102,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':os.environ.get('MARIADB_DATABASE'),
+        'USER':os.environ.get('MARIADB_USER'),
+        'PASSWORD':os.environ.get('MARIADB_ROOT_PASSWORD'),
+        'HOST':os.environ.get('MARIADB_ROOT_HOST'),
+        'PORT':os.environ.get('MARIADB_PORT'),
+    },
+    'mysports' : {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MARIADB_DATABASE_SPORTS'),
         'USER':os.environ.get('MARIADB_USER'),
         'PASSWORD':os.environ.get('MARIADB_ROOT_PASSWORD'),
         'HOST':os.environ.get('MARIADB_ROOT_HOST'),

@@ -5,3 +5,4 @@ graphene-django
 requests
 pytest-django
 django-redis
+pytz

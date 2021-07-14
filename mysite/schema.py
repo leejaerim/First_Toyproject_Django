@@ -1,3 +1,4 @@
+from mysports.schema import MatchQuery
 import graphene
 from todolist.schema import TodoMutation, TodoQuery
 from omok.schema import OmokMutation, OmokQuery
@@ -8,6 +9,7 @@ class Query(
     UserQuery,
     TodoQuery,
     OmokQuery,
+    MatchQuery,
     graphene.ObjectType
 ): pass
     

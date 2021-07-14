@@ -237,3 +237,26 @@ AttributeError: Unable to lookup 'room' on User or UserAdmin
 [29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
 [29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
 [29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 86184
+[14/Jul/2021 07:29:06] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jul/2021 07:29:11] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[14/Jul/2021 07:29:30] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[14/Jul/2021 07:31:38] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[14/Jul/2021 07:31:48] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[14/Jul/2021 07:31:52] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jul/2021 07:32:09] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[14/Jul/2021 07:33:22] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[14/Jul/2021 07:33:25] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jul/2021 07:33:30] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[14/Jul/2021 07:33:32] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jul/2021 07:33:40] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 25035
+[14/Jul/2021 07:44:06] INFO [django.utils.autoreload:250] /workspace/mysports/types.py changed, reloading.
+[14/Jul/2021 07:44:08] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jul/2021 07:44:15] INFO [django.utils.autoreload:250] /workspace/mysports/types.py changed, reloading.
+[14/Jul/2021 07:44:18] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jul/2021 07:52:58] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3372
+[14/Jul/2021 07:54:44] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[14/Jul/2021 07:54:47] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jul/2021 07:54:53] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[14/Jul/2021 07:54:57] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3772
+[14/Jul/2021 07:55:34] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 771
+[14/Jul/2021 08:01:53] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 1397

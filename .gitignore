@@ -1,6 +1,7 @@
 .env
 .vscode
-*.log
 *__pycache__*
 .devcontainer
 *.rdb
+*.log
+log/*
