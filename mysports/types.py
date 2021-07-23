@@ -1,5 +1,5 @@
 from graphene_django import DjangoObjectType
-from mysports.models import Leagues, Matches, Sports, Teams
+from mysports.models import BasketballStandings, Competitions, FootballStandings, Matches, Seasons, Sports, Teams
 
 
 class SportType(DjangoObjectType):
@@ -7,9 +7,14 @@ class SportType(DjangoObjectType):
         model = Sports
 
 
-class LeagueType(DjangoObjectType):
+class SeasonType(DjangoObjectType):
     class Meta:
-        model = Leagues
+        model = Seasons
+
+
+class CompetitionType(DjangoObjectType):
+    class Meta:
+        model = Competitions
 
 
 class TeamType(DjangoObjectType):
@@ -20,3 +25,14 @@ class TeamType(DjangoObjectType):
 class MatchType(DjangoObjectType):
     class Meta:
         model = Matches
+
+
+class FootballStandingType(DjangoObjectType):
+    class Meta:
+        model = FootballStandings
+
+
+class BasketballStandingType(DjangoObjectType):
+    class Meta:
+        model = BasketballStandings
+

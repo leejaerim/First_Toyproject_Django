@@ -1,262 +1,308 @@
-[27/Jun/2021 07:42:52] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[29/Jun/2021 04:17:02] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[29/Jun/2021 04:17:05] INFO [django.server:161] "GET /admin/toy_auth/user/ HTTP/1.1" 302 0
-[29/Jun/2021 04:17:05] INFO [django.server:161] "GET /admin/login/?next=/admin/toy_auth/user/ HTTP/1.1" 200 2242
-[29/Jun/2021 04:17:05] INFO [django.server:161] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2271
-[29/Jun/2021 04:17:05] INFO [django.server:161] "GET /static/admin/css/base.css HTTP/1.1" 200 19513
-[29/Jun/2021 04:17:05] INFO [django.server:161] "GET /static/admin/css/login.css HTTP/1.1" 200 939
-[29/Jun/2021 04:17:05] INFO [django.server:161] "GET /static/admin/css/responsive.css HTTP/1.1" 200 18545
-[29/Jun/2021 04:17:05] INFO [django.server:161] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 1360
-[29/Jun/2021 04:17:05] INFO [django.server:161] "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
-[29/Jun/2021 04:17:05] INFO [django.server:161] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 85692
-[29/Jun/2021 04:17:05] INFO [django.server:161] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 85876
-[29/Jun/2021 04:17:13] INFO [django.server:161] "POST /admin/login/?next=/admin/toy_auth/user/ HTTP/1.1" 302 0
-[29/Jun/2021 04:17:14] ERROR [django.request:224] Internal Server Error: /admin/toy_auth/user/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 319, in label_for_field
-    field = _get_non_gfk_field(model._meta, name)
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 300, in _get_non_gfk_field
-    raise FieldDoesNotExist()
-django.core.exceptions.FieldDoesNotExist
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
-    response = get_response(request)
-  File "/usr/local/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
-    response = response.render()
-  File "/usr/local/lib/python3.9/site-packages/django/template/response.py", line 105, in render
-    self.content = self.rendered_content
-  File "/usr/local/lib/python3.9/site-packages/django/template/response.py", line 83, in rendered_content
-    return template.render(context, self._request)
-  File "/usr/local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
-    return self.template.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 170, in render
-    return self._render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 150, in render
-    return compiled_parent._render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 150, in render
-    return compiled_parent._render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 62, in render
-    result = block.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 62, in render
-    result = block.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/templatetags/base.py", line 33, in render
-    return super().render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/library.py", line 214, in render
-    _dict = self.func(*resolved_args, **resolved_kwargs)
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 298, in result_list
-    headers = list(result_headers(cl))
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 79, in result_headers
-    text, attr = label_for_field(
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 344, in label_for_field
-    raise AttributeError(message)
-AttributeError: Unable to lookup 'room' on User or UserAdmin
-[29/Jun/2021 04:17:14] ERROR [django.server:161] "GET /admin/toy_auth/user/ HTTP/1.1" 500 297769
-[29/Jun/2021 04:17:33] INFO [django.utils.autoreload:250] /workspace/toy_auth/admin.py changed, reloading.
-[29/Jun/2021 04:17:35] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[29/Jun/2021 04:17:39] ERROR [django.request:224] Internal Server Error: /admin/toy_auth/user/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 319, in label_for_field
-    field = _get_non_gfk_field(model._meta, name)
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 300, in _get_non_gfk_field
-    raise FieldDoesNotExist()
-django.core.exceptions.FieldDoesNotExist
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
-    response = get_response(request)
-  File "/usr/local/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
-    response = response.render()
-  File "/usr/local/lib/python3.9/site-packages/django/template/response.py", line 105, in render
-    self.content = self.rendered_content
-  File "/usr/local/lib/python3.9/site-packages/django/template/response.py", line 83, in rendered_content
-    return template.render(context, self._request)
-  File "/usr/local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
-    return self.template.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 170, in render
-    return self._render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 150, in render
-    return compiled_parent._render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 150, in render
-    return compiled_parent._render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 62, in render
-    result = block.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 62, in render
-    result = block.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/templatetags/base.py", line 33, in render
-    return super().render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/library.py", line 214, in render
-    _dict = self.func(*resolved_args, **resolved_kwargs)
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 298, in result_list
-    headers = list(result_headers(cl))
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 79, in result_headers
-    text, attr = label_for_field(
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 344, in label_for_field
-    raise AttributeError(message)
-AttributeError: Unable to lookup 'room' on User or UserAdmin
-[29/Jun/2021 04:17:39] ERROR [django.server:161] "GET /admin/toy_auth/user/ HTTP/1.1" 500 297769
-[29/Jun/2021 04:17:41] ERROR [django.request:224] Internal Server Error: /admin/toy_auth/user/
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 319, in label_for_field
-    field = _get_non_gfk_field(model._meta, name)
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 300, in _get_non_gfk_field
-    raise FieldDoesNotExist()
-django.core.exceptions.FieldDoesNotExist
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
-    response = get_response(request)
-  File "/usr/local/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
-    response = response.render()
-  File "/usr/local/lib/python3.9/site-packages/django/template/response.py", line 105, in render
-    self.content = self.rendered_content
-  File "/usr/local/lib/python3.9/site-packages/django/template/response.py", line 83, in rendered_content
-    return template.render(context, self._request)
-  File "/usr/local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
-    return self.template.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 170, in render
-    return self._render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 150, in render
-    return compiled_parent._render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 150, in render
-    return compiled_parent._render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 62, in render
-    result = block.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/loader_tags.py", line 62, in render
-    result = block.nodelist.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/base.py", line 905, in render_annotated
-    return self.render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/templatetags/base.py", line 33, in render
-    return super().render(context)
-  File "/usr/local/lib/python3.9/site-packages/django/template/library.py", line 214, in render
-    _dict = self.func(*resolved_args, **resolved_kwargs)
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 298, in result_list
-    headers = list(result_headers(cl))
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 79, in result_headers
-    text, attr = label_for_field(
-  File "/usr/local/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 344, in label_for_field
-    raise AttributeError(message)
-AttributeError: Unable to lookup 'room' on User or UserAdmin
-[29/Jun/2021 04:17:41] ERROR [django.server:161] "GET /admin/toy_auth/user/ HTTP/1.1" 500 297769
-[29/Jun/2021 04:19:10] INFO [django.utils.autoreload:250] /workspace/toy_auth/admin.py changed, reloading.
-[29/Jun/2021 04:19:13] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /admin/toy_auth/user/ HTTP/1.1" 200 22840
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/css/changelists.css HTTP/1.1" 200 6874
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/js/core.js HTTP/1.1" 200 5698
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/js/actions.js HTTP/1.1" 200 7664
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 5984
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/js/urlify.js HTTP/1.1" 200 7902
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 287630
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
-[29/Jun/2021 04:19:20] INFO [django.server:161] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 86184
-[14/Jul/2021 07:29:06] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[14/Jul/2021 07:29:11] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
-[14/Jul/2021 07:29:30] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
-[14/Jul/2021 07:31:38] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
-[14/Jul/2021 07:31:48] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
-[14/Jul/2021 07:31:52] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[14/Jul/2021 07:32:09] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
-[14/Jul/2021 07:33:22] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
-[14/Jul/2021 07:33:25] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[14/Jul/2021 07:33:30] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
-[14/Jul/2021 07:33:32] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[14/Jul/2021 07:33:40] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 25035
-[14/Jul/2021 07:44:06] INFO [django.utils.autoreload:250] /workspace/mysports/types.py changed, reloading.
-[14/Jul/2021 07:44:08] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[14/Jul/2021 07:44:15] INFO [django.utils.autoreload:250] /workspace/mysports/types.py changed, reloading.
-[14/Jul/2021 07:44:18] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[14/Jul/2021 07:52:58] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3372
-[14/Jul/2021 07:54:44] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
-[14/Jul/2021 07:54:47] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[14/Jul/2021 07:54:53] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
-[14/Jul/2021 07:54:57] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3772
-[14/Jul/2021 07:55:34] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 771
-[14/Jul/2021 08:01:53] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 1397
+[22/Jul/2021 05:02:04] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 123
+[22/Jul/2021 05:02:53] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 529
+[22/Jul/2021 06:56:30] WARNING [django.request:224] Not Found: /babel/parser/lib/index.js
+[22/Jul/2021 06:56:30] WARNING [django.server:161] "GET /babel/parser/lib/index.js HTTP/1.1" 404 2260
+[22/Jul/2021 06:56:37] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 127
+[22/Jul/2021 07:15:17] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 124
+[22/Jul/2021 07:15:22] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 135
+[22/Jul/2021 07:15:22] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 21
+[22/Jul/2021 07:33:56] WARNING [django.request:224] Not Found: /babel/parser/lib/index.js
+[22/Jul/2021 07:33:56] WARNING [django.server:161] "GET /babel/parser/lib/index.js HTTP/1.1" 404 2260
+[22/Jul/2021 07:33:56] WARNING [django.request:224] Not Found: /babel/parser/lib/index.js
+[22/Jul/2021 07:33:56] WARNING [django.server:161] "GET /babel/parser/lib/index.js HTTP/1.1" 404 2260
+[22/Jul/2021 07:33:56] WARNING [django.request:224] Not Found: /babel/parser/lib/index.js
+[22/Jul/2021 07:33:56] WARNING [django.server:161] "GET /babel/parser/lib/index.js HTTP/1.1" 404 2260
+[22/Jul/2021 07:33:59] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 131
+[22/Jul/2021 08:47:05] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 10:05:11] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 10:25:49] WARNING [django.request:224] Bad Request: /graphql/
+[22/Jul/2021 10:25:49] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 103
+[22/Jul/2021 10:25:59] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 10:26:00] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 10:26:00] WARNING [django.request:224] Bad Request: /graphql/
+[22/Jul/2021 10:26:00] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 103
+[22/Jul/2021 10:27:01] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 7404
+[22/Jul/2021 10:27:12] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 10:27:13] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 10:27:13] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 7404
+[22/Jul/2021 10:28:08] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 10:28:09] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 10:28:10] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 7404
+[22/Jul/2021 10:53:24] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 10:53:25] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 10:53:25] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 7404
+[22/Jul/2021 11:06:54] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 1272
+[22/Jul/2021 11:07:03] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 6154
+[22/Jul/2021 11:07:04] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 11:07:05] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 11:36:53] WARNING [django.request:224] Not Found: /babel/parser/lib/index.js
+[22/Jul/2021 11:36:53] WARNING [django.server:161] "GET /babel/parser/lib/index.js HTTP/1.1" 404 2260
+[22/Jul/2021 11:36:53] WARNING [django.request:224] Not Found: /babel/parser/lib/index.js
+[22/Jul/2021 11:36:53] WARNING [django.server:161] "GET /babel/parser/lib/index.js HTTP/1.1" 404 2260
+[22/Jul/2021 11:36:53] WARNING [django.request:224] Not Found: /babel/parser/lib/index.js
+[22/Jul/2021 11:36:53] WARNING [django.server:161] "GET /babel/parser/lib/index.js HTTP/1.1" 404 2260
+[22/Jul/2021 11:36:53] WARNING [django.request:224] Not Found: /babel/parser/lib/index.js
+[22/Jul/2021 11:36:53] WARNING [django.server:161] "GET /babel/parser/lib/index.js HTTP/1.1" 404 2260
+[22/Jul/2021 11:36:57] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 11:36:58] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 11:36:58] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 7404
+[22/Jul/2021 11:48:16] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 11:48:16] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 11:48:17] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 7404
+[22/Jul/2021 11:51:28] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 11:51:39] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 11:51:40] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 11:51:40] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 11:51:51] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 11:51:57] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 11:54:23] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 626
+[22/Jul/2021 12:05:16] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 7404
+[22/Jul/2021 12:07:13] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 12:07:21] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 12:07:26] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 12:07:34] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 6804
+[22/Jul/2021 12:07:40] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3748
+[22/Jul/2021 12:08:39] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 12:08:59] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 12:09:14] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 12:09:14] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 12:09:14] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 12:09:18] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 12:09:20] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 12:09:56] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 12:10:41] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3089
+[22/Jul/2021 12:13:17] INFO [django.utils.autoreload:250] /workspace/mysports/types.py changed, reloading.
+[22/Jul/2021 12:13:20] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jul/2021 12:13:52] INFO [django.utils.autoreload:250] /workspace/mysports/types.py changed, reloading.
+[22/Jul/2021 12:13:55] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jul/2021 12:14:57] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[22/Jul/2021 12:15:00] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jul/2021 12:15:46] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[22/Jul/2021 12:15:49] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jul/2021 12:17:04] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 788
+[22/Jul/2021 12:23:55] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jul/2021 12:24:15] INFO [django.utils.autoreload:250] /workspace/mysports/models.py changed, reloading.
+[22/Jul/2021 12:24:17] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jul/2021 12:24:23] INFO [django.server:161] "GET /graphql/ HTTP/1.1" 200 2081
+[22/Jul/2021 12:24:23] INFO [django.server:161] "GET /static/graphene_django/graphiql.js HTTP/1.1" 304 0
+[22/Jul/2021 12:24:24] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 45701
+[22/Jul/2021 12:24:31] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 548
+[22/Jul/2021 12:25:44] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[22/Jul/2021 12:25:46] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jul/2021 12:29:05] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 698
+[22/Jul/2021 12:30:21] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[22/Jul/2021 12:30:23] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jul/2021 12:30:30] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[22/Jul/2021 12:30:49] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[22/Jul/2021 12:42:11] WARNING [django.request:224] Not Found: /babel/parser/lib/index.js
+[22/Jul/2021 12:42:11] WARNING [django.server:161] "GET /babel/parser/lib/index.js HTTP/1.1" 404 2260
+[22/Jul/2021 12:43:02] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 33
+[22/Jul/2021 12:43:06] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 1103
+[22/Jul/2021 12:43:14] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 1739
+[22/Jul/2021 13:15:20] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 954
+[22/Jul/2021 13:15:55] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 13:15:55] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:15:55] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:15:57] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 954
+[22/Jul/2021 13:19:00] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 13:19:00] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:19:01] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:19:03] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 954
+[22/Jul/2021 13:47:13] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 13:47:13] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:47:13] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:47:16] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 954
+[22/Jul/2021 13:48:59] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 13:48:59] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:48:59] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:49:01] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 954
+[22/Jul/2021 13:49:33] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 13:49:33] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:49:33] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:49:37] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 954
+[22/Jul/2021 13:50:23] WARNING [django.request:224] Bad Request: /graphql/
+[22/Jul/2021 13:50:23] WARNING [django.request:224] Bad Request: /graphql/
+[22/Jul/2021 13:50:23] WARNING [django.request:224] Bad Request: /graphql/
+[22/Jul/2021 13:50:23] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 467
+[22/Jul/2021 13:50:23] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 467
+[22/Jul/2021 13:50:23] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 467
+[22/Jul/2021 13:50:49] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 33
+[22/Jul/2021 13:50:50] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5890
+[22/Jul/2021 13:50:50] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5872
+[22/Jul/2021 13:51:02] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[22/Jul/2021 13:51:03] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:51:03] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[22/Jul/2021 13:51:04] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 954
+[22/Jul/2021 13:51:04] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 33
+[22/Jul/2021 13:51:05] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5872
+[22/Jul/2021 13:51:05] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5890
+[22/Jul/2021 13:55:10] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3066
+[23/Jul/2021 01:07:09] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 01:07:10] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:07:10] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:24:11] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[23/Jul/2021 01:24:15] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 01:24:15] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:24:16] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:24:17] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 954
+[23/Jul/2021 01:24:17] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 01:24:17] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 286
+[23/Jul/2021 01:24:18] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 33
+[23/Jul/2021 01:24:18] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 01:24:18] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 286
+[23/Jul/2021 01:24:18] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5890
+[23/Jul/2021 01:24:18] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5872
+[23/Jul/2021 01:24:46] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 35
+[23/Jul/2021 01:24:57] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 01:24:58] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:24:58] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:25:01] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 01:25:02] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:25:02] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:25:03] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 954
+[23/Jul/2021 01:25:03] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 35
+[23/Jul/2021 01:25:03] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 33
+[23/Jul/2021 01:25:04] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5872
+[23/Jul/2021 01:25:04] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5890
+[23/Jul/2021 01:34:46] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3066
+[23/Jul/2021 01:47:49] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 01:47:49] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:47:49] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:49:29] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 01:49:29] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:49:30] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:51:50] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 01:51:50] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:51:50] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:53:04] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 01:53:05] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:53:05] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:57:46] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 01:58:12] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 954
+[23/Jul/2021 01:58:12] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 35
+[23/Jul/2021 01:58:12] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 33
+[23/Jul/2021 01:58:12] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5872
+[23/Jul/2021 01:58:12] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5890
+[23/Jul/2021 02:21:52] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[23/Jul/2021 02:29:17] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3146
+[23/Jul/2021 02:30:10] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 02:30:10] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 02:30:11] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 02:30:17] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5054
+[23/Jul/2021 02:32:33] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3146
+[23/Jul/2021 05:21:09] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 05:21:09] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 05:21:09] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 05:21:14] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5054
+[23/Jul/2021 07:48:12] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[23/Jul/2021 07:48:28] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 07:48:37] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 07:49:37] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 07:51:57] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 07:52:32] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3146
+[23/Jul/2021 07:52:40] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:03:28] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:10:01] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:10:57] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:10:57] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:11:01] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:11:27] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:11:31] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5054
+[23/Jul/2021 08:11:37] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:14:41] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 5140
+[23/Jul/2021 08:15:50] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[23/Jul/2021 08:15:52] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[23/Jul/2021 08:17:24] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3201
+[23/Jul/2021 08:17:30] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:23:29] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:23:29] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:23:29] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3201
+[23/Jul/2021 08:24:43] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:24:44] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:24:44] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:24:48] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3201
+[23/Jul/2021 08:28:56] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:28:56] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:28:56] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:29:01] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3201
+[23/Jul/2021 08:36:06] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:36:12] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:40:02] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:40:04] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:40:07] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:40:08] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:40:08] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:40:58] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3201
+[23/Jul/2021 08:41:00] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 23
+[23/Jul/2021 08:49:42] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 08:49:42] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 183
+[23/Jul/2021 08:51:02] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 08:51:02] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 163
+[23/Jul/2021 08:51:34] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:51:34] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 08:51:34] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 163
+[23/Jul/2021 08:52:48] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[23/Jul/2021 08:52:50] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[23/Jul/2021 08:52:55] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:52:55] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 98
+[23/Jul/2021 08:53:04] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[23/Jul/2021 08:53:08] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[23/Jul/2021 08:53:12] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:53:12] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 132
+[23/Jul/2021 08:53:42] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[23/Jul/2021 08:53:45] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:53:45] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 08:53:45] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 296
+[23/Jul/2021 08:54:02] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 107
+[23/Jul/2021 08:54:05] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:54:05] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 107
+[23/Jul/2021 08:55:38] INFO [django.utils.autoreload:250] /workspace/mysports/schema.py changed, reloading.
+[23/Jul/2021 08:55:40] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[23/Jul/2021 08:55:45] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 08:55:45] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 171
+[23/Jul/2021 09:04:43] INFO [django.utils.autoreload:250] /workspace/mysports/types.py changed, reloading.
+[23/Jul/2021 09:04:45] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[23/Jul/2021 09:06:23] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[23/Jul/2021 09:06:42] INFO [django.utils.autoreload:250] /workspace/mysports/types.py changed, reloading.
+[23/Jul/2021 09:06:47] INFO [django.utils.autoreload:636] Watching for file changes with StatReloader
+[23/Jul/2021 09:10:09] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 09:10:09] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 153
+[23/Jul/2021 09:10:15] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 09:10:15] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 09:10:15] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 153
+[23/Jul/2021 09:10:24] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 09:10:25] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 09:10:25] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 153
+[23/Jul/2021 09:10:43] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 09:10:44] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 09:10:44] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 153
+[23/Jul/2021 09:10:45] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 3201
+[23/Jul/2021 09:10:45] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 09:10:45] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 153
+[23/Jul/2021 09:10:48] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 09:10:48] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 153
+[23/Jul/2021 09:16:29] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 09:16:29] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 09:16:29] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 153
+[23/Jul/2021 09:16:50] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 09:16:50] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 129
+[23/Jul/2021 09:17:22] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 09:17:22] WARNING [django.request:224] Bad Request: /graphql/
+[23/Jul/2021 09:17:22] WARNING [django.server:161] "POST /graphql/ HTTP/1.1" 400 129
+[23/Jul/2021 09:17:56] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 667
+[23/Jul/2021 09:18:03] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 09:18:03] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 667
+[23/Jul/2021 09:46:11] WARNING [django.request:224] Not Found: /sports/football/babel/parser/lib/index.js
+[23/Jul/2021 09:46:11] WARNING [django.server:161] "GET /sports/football/babel/parser/lib/index.js HTTP/1.1" 404 2308
+[23/Jul/2021 09:46:11] WARNING [django.request:224] Not Found: /sports/football/babel/parser/lib/index.js
+[23/Jul/2021 09:46:11] WARNING [django.server:161] "GET /sports/football/babel/parser/lib/index.js HTTP/1.1" 404 2308
+[23/Jul/2021 10:12:55] WARNING [django.request:224] Not Found: /sports/football/babel/parser/lib/index.js
+[23/Jul/2021 10:12:55] WARNING [django.server:161] "GET /sports/football/babel/parser/lib/index.js HTTP/1.1" 404 2308
+[23/Jul/2021 10:12:55] WARNING [django.request:224] Not Found: /sports/football/babel/parser/lib/index.js
+[23/Jul/2021 10:12:55] WARNING [django.server:161] "GET /sports/football/babel/parser/lib/index.js HTTP/1.1" 404 2308
+[23/Jul/2021 10:13:01] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 10:13:01] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 667
+[23/Jul/2021 10:17:03] WARNING [django.request:224] Not Found: /sports/football/babel/parser/lib/index.js
+[23/Jul/2021 10:17:03] WARNING [django.server:161] "GET /sports/football/babel/parser/lib/index.js HTTP/1.1" 404 2308
+[23/Jul/2021 10:17:06] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 873
+[23/Jul/2021 10:17:07] INFO [django.server:161] "POST /graphql/ HTTP/1.1" 200 667
